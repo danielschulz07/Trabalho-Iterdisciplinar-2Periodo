@@ -1,6 +1,6 @@
 import { Corrida } from "./Corrida";
 
-export class TrailRunning {
+export class TrailRunning extends Corrida{
     #idTrailRunning;
     #qtdCheckpoints;
     #modalidade;
