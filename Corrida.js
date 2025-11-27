@@ -18,7 +18,7 @@ export class Corrida {
         Corrida.#idCorridaStatic++;
     }
 
-    get id(){
+    get idCorrida(){
         return this.#idCorrida;
     }
 
@@ -27,6 +27,6 @@ export class Corrida {
     }
 
         toString() {
-        return ("\nid: " + this.id);
+        return ("\nid: " + this.idCorrida);
     } 
 }
