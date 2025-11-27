@@ -1,4 +1,4 @@
-import { Pessoa } from "./Pessoa";
+import { Pessoa } from "./Pessoa.js";
 export class Corrida {
     static #idCorrida = 0;
     #dataCorrida;
@@ -17,6 +17,6 @@ export class Corrida {
     }
 
     historico(pessoa){
-        Pessoa.historico(pessoa,this.#nomeCorrida);//essa função sera chamada no model recebendo o id dos corredores direto do vetor com foreach (n sei se vai funcionar)
+        pessoa.historico(pessoa.id,this.#nomeCorrida);//essa função sera chamada no model recebendo o id dos corredores direto do vetor com foreach (n sei se vai funcionar)
     }
 }

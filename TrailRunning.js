@@ -1,4 +1,4 @@
-import { Corrida } from "./Corrida";
+import { Corrida } from "./Corrida.js";
 
 export class TrailRunning extends Corrida{
     #idTrailRunning;

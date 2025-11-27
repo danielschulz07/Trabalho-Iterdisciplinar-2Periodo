@@ -5,7 +5,7 @@ export class Pessoa {
     #cpf;
     #email;
     #dtNascimento;
-    #qtdCorridasPassadas;
+    #qtdCorridasPassadas = 0;
     #nomeCorridasPassadas = [];
 
     constructor (nome, cpf, dtNasc, idade, email) {
@@ -21,7 +21,7 @@ export class Pessoa {
     os códigos mostrados anteriormente para a classe Cliente
     */
 
-    get idPessoa(){
+    static get idPessoa(){
         return this.idPessoa;
     }
 
@@ -46,6 +46,14 @@ export class Pessoa {
     set dtNascimento(dtNascimento){
         this.#dtNascimento = dtNascimento;
     }
+    
+    get qtdCorridasPassadas(){
+        return this.#qtdCorridasPassadas;
+    }
+
+    get nomeCorridasPassadas(){
+        return this.#nomeCorridasPassadas;
+    }
 
     toString() {
         return ("\nNome: " + this.#nome +
@@ -54,7 +62,7 @@ export class Pessoa {
     } 
 
     historico(pessoa, nomeCorrida) {
-        if(pessoa.idPessoa == this.idPessoa){
+        if(pessoa == this.idPessoa){
             this.#qtdCorridasPassadas++;
             this.#nomeCorridasPassadas.push(nomeCorrida);
         }
