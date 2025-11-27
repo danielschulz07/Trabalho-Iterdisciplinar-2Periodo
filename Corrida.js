@@ -1,6 +1,7 @@
 import { Pessoa } from "./Pessoa.js";
 export class Corrida {
-    static #idCorrida = 0;
+    static #idCorridaStatic = 0;
+    #idCorrida;
     #dataCorrida;
     #limiteCorredores;
     #nomeCorrida;
@@ -13,10 +14,19 @@ export class Corrida {
         this.#nomeCorrida = nomeCorrida;
         this.#distancia = distancia;
 
-        Corrida.#idCorrida++;
+        this.#idCorrida = Corrida.#idCorridaStatic;
+        Corrida.#idCorridaStatic++;
+    }
+
+    get id(){
+        return this.#idCorrida;
     }
 
     historico(pessoa){
         pessoa.historico(pessoa.id,this.#nomeCorrida);//essa função sera chamada no model recebendo o id dos corredores direto do vetor com foreach (n sei se vai funcionar)
     }
+
+        toString() {
+        return ("\nid: " + this.id);
+    } 
 }

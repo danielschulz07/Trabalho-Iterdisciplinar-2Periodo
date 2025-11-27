@@ -1,5 +1,6 @@
 export class Pessoa {
-    static #idPessoa = 0;
+    static #idPessoaStatic = 0;
+    #idPessoa;
     #nome;
     #idade;
     #cpf;
@@ -15,7 +16,8 @@ export class Pessoa {
         this.#email = email;
         this.#dtNascimento = dtNasc;
 
-        Pessoa.#idPessoa++;
+        this.#idPessoa = Pessoa.#idPessoaStatic;
+        Pessoa.#idPessoaStatic++;
     }
     /*... as implementações dos métodos get e set seguem
     os códigos mostrados anteriormente para a classe Cliente
