@@ -8,6 +8,7 @@ export class Pessoa {
     #dtNascimento;
     #qtdCorridasPassadas = 0;
     #nomeCorridasPassadas = [];
+    #tipoCorridasPassadas = [];
 
     constructor (nome, cpf, dtNasc, idade, email) {
         this.#nome = nome;
@@ -67,10 +68,11 @@ export class Pessoa {
             "\nNome das corridas: " + this.nomeCorridasPassadas);
     }
 
-    historico(pessoa, nomeCorrida) {
+    historico(pessoa, nomeCorrida, tipoCorrida) {
         if(pessoa == this.idPessoa){
             this.#qtdCorridasPassadas++;
             this.#nomeCorridasPassadas.push(nomeCorrida);
+            this.#tipoCorridasPassadas.push(tipoCorrida);
         }
     }
 }

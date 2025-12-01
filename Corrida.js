@@ -6,13 +6,15 @@ export class Corrida {
     #distancia;
     #dataCorrida;
     #limiteCorredores;
+    #listaCorredores = [];
 
 
-    constructor(nomeCorrida, distancia, dataCorrida, limiteCorredores){
+    constructor(nomeCorrida, distancia, dataCorrida, limiteCorredores,listaCorredores = []){
         this.#nomeCorrida = nomeCorrida;
         this.#distancia = distancia;
         this.#dataCorrida = dataCorrida;
         this.#limiteCorredores = limiteCorredores;
+
 
         this.#idCorrida = Corrida.#idCorridaStatic;
         Corrida.#idCorridaStatic++;
@@ -26,7 +28,12 @@ export class Corrida {
         pessoa.historico(pessoa.id,this.#nomeCorrida);
     }
 
-        toString() {
-        return ("\nid: " + this.idCorrida);
+    toString() {
+        return ("\nid: " + this.idCorrida +
+            "\nlista: "  + this.#listaCorredores);
     } 
+
+    adicionarCorredor(pessoa) {
+        this.#listaCorredores.push(pessoa);
+    }
 }
