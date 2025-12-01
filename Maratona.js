@@ -11,4 +11,9 @@ export class Maratona extends Corrida{
         this.#qtdPontoApoio = qtdPontoApoio;
     }
 
+    toString() {
+        return (super.toString() +
+            "\nAltimetria: " + this.#altimetria +
+            "\nPontos Apoio: " + this.#qtdPontoApoio);
+    }
 }

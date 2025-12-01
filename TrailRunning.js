@@ -12,4 +12,11 @@ export class TrailRunning extends Corrida{
         this.#modalidade = modalidade;
         this.#nivelDificuldade = nivelDificuldade;
     }
+
+    toString() {
+        return (super.toString() +
+            "\nCheckpoints: " + this.#qtdCheckpoints +
+            "\nModalidade: " + this.#modalidade +
+            "\nDificuldade: " + this.#nivelDificuldade);
+    }
 }
