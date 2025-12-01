@@ -193,3 +193,78 @@ nav a:hover {
     color: #444;
     line-height: 1.5;
 }
+
+
+
+  /* PAGINA DE INSCRIÇÂO */
+
+
+main {
+    background-color: #d4ffeb;
+}
+
+.box {
+    background: #fdfffe;
+    width: 420px;
+    padding: 32px 28px;
+    border-radius: 20px;
+    border: 2px solid #000000;
+}
+
+/* TÍTULO */
+.box h2 {
+    text-align: center;
+    margin-bottom: 22px;
+    color: #000000;
+    letter-spacing: 1px;
+}
+
+/* LABELS */
+.box label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 8px;
+    display: block;
+}
+
+/* INPUTS E SELECTS */
+.box input,
+.box select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    border-radius: 12px;
+    border: 1px solid #044d28;
+    outline: none;
+    background: #ffffff;
+    color: #000000;
+}
+
+/* BOTÃO */
+.box .button {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(90deg, #00ff84, #0ea5e9);
+    border: none;
+    border-radius: 14px;
+    color: #021a0d;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.box .button:hover {
+    transform: scale(1.05);
+}
+
+.wrapper {
+    display: flex;
+    gap: 60px;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    padding: 40px;
+}

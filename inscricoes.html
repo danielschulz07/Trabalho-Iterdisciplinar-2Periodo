@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema para Gerenciamento de Corridas</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header>
+        <div class="logo">RUNNING SYSTEM</div>
+        <nav>
+            <a href="index.html">HOME</a>
+            <a href="inscricoes.html">INSCREVA-SE</a>
+        </nav>
+    </header>
+    <main>
+        <div class="wrapper">
+            <!-- BOX 2 - CADASTRO DE CORREDORES -->
+            <div class="box">
+
+                <h2>Cadastro de Corredor</h2>
+                <label>Nome do corredor</label>
+                <input id="inNome" type="text" placeholder="Nome completo">
+                <label>Data Nascimento</label>
+                <input id="dtDataNasc" type="date">
+                <label>Idade</label>
+                <input id="inIdade" type="number" placeholder="Idade">
+                <label>CPF</label>
+                <input id="inCpf" type="number" placeholder="CPF">
+
+                <label>Escolha a corrida</label>
+                <select name="opcao" id="slcOpcaoCorrida">
+                    <option selected disabled value="">Selecione a corrida</option>
+                    <option value="OpcTrail">Trail Running</option>
+                    <option value="OpcMaratona">Maratona</option>
+                </select>
+                <input class="button" type="button" id="btInscrever" value="Inscrever Corredor">
+            </div>
+
+            <!-- BOX 1 - CADASTRO DE CORRIDAS -->
+            <div class="box">
+
+                <h2>Cadastro de Corrida</h2>
+                <!-- DADOS GERAIS -->
+                <label>Nome da corrida</label>
+                <input id="inNomeCorrida" type="text" placeholder="Ex: Trail Run Serra">
+                <label>Distância (km)</label>
+                <input id="inDistancia" type="number" placeholder="Ex: 10">
+                <label>Data da corrida</label>
+                <input id="dtCorrida" type="date">
+                <label>Quantidade de Competidores </label>
+                <input id="inQtdCompetidores" type="date">
+
+                <!-- MODALIDADE PRINCIPAL -->
+                <label>Modalidade</label>
+                <select name="opcao" id="slcOpcaoModalidade">
+                    <option selected disabled>Selecione a modalidade</option>
+                    <option value="Maratona">Maratona</option>
+                    <option value="TrailRunning">Trail Running</option>
+                </select>
+
+                <hr style="margin: 25px 0; border-color: #14532d;">
+
+                <!-- MARATONA -->
+                <h3>Dados da Maratona</h3>
+
+                <label>Ganho de elevação (m)</label>
+                <input id="inGanhoElevacao" type="number" placeholder="Ex: 350">
+
+                <label>Quantidade de checkpoint</label>
+                <input id="qtdCheckpointMaratona" type="number" placeholder="Ex: 12">
+
+                <hr style="margin: 25px 0; border-color: #14532d;">
+
+                <!-- TRAIL RUNNING -->
+                <h3>Dados do Trail Running</h3>
+
+                <label>Quantidade de checkpoints</label>
+                <input id="qtdCheckpointTrail" type="number" placeholder="Ex: 8">
+
+                <label>Modalidade do Trail</label>
+                <select name="opcao" id="slcOpcaoModalidadeTrail">
+                    <option selected disabled>Selecione o tipo</option>
+                    <option value="velocidade">Velocidade</option>
+                    <option value="regularidade">Regularidade</option>
+                </select>
+
+                <label>Nível de Dificuldade</label>
+                <select name="opcao" id="slcOpcaoDificuldade">
+                    <option selected disabled>Selecione o tipo</option>
+                    <option value="MuitoFacil">Muito Fácil</option>
+                    <option value="Facil">Fácil</option>
+                    <option value="Media">Média</option>
+                    <option value="Dificil">Difícil</option>
+                    <option value="MuitoDificil">Muito Difícil</option>
+                </select>
+                <input class="button" type="button" id="btCadastrarCorrida" value="Cadastrar Corrida">
+            </div>
+        </div>
+    </main>
+ 
+</body>
+   <script src="./competicoesView.js" type="module"></script>
+</html>
