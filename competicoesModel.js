@@ -8,20 +8,12 @@ var teste = new Pessoa(1213,3123,123,1231,23);
 var teste2 = new Pessoa("zxc","zxcz","zxc","zxc","zxc");
 
 
-var vetPessoa = [teste, teste2];
+export var vetPessoa = [teste, teste2];
 
 var cor = new Corrida(123,123,123,123);
 var cor2 = new Corrida("zxc","zxc","zxc","zxc");
 var mar1 = new Maratona(123,123,123,123,123,123);
 var trail = new TrailRunning("zxc","zxc","zxc","zxc","zxc","zxc","zxc");
 
-var vetCorrida = [cor,cor2,mar1,trail];
+export var vetCorrida = [cor,cor2,mar1,trail];
 
-vetPessoa.forEach((pessoa) => cor.historico(pessoa));
-vetPessoa.forEach((pessoa) => cor2.historico(pessoa));
-console.log(vetPessoa);
-console.log(mar1.toString());
-console.log(cor2.toString());
-console.log(trail.toString());
-
-console.log(teste.relatorio());

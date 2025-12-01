@@ -2,17 +2,17 @@ import { Pessoa } from "./Pessoa.js";
 export class Corrida {
     static #idCorridaStatic = 0;
     #idCorrida;
-    #dataCorrida;
-    #limiteCorredores;
     #nomeCorrida;
     #distancia;
+    #dataCorrida;
+    #limiteCorredores;
 
 
-    constructor(dataCorrida, limiteCorredores, nomeCorrida, distancia){
-        this.#dataCorrida = dataCorrida;
-        this.#limiteCorredores = limiteCorredores;
+    constructor(nomeCorrida, distancia, dataCorrida, limiteCorredores){
         this.#nomeCorrida = nomeCorrida;
         this.#distancia = distancia;
+        this.#dataCorrida = dataCorrida;
+        this.#limiteCorredores = limiteCorredores;
 
         this.#idCorrida = Corrida.#idCorridaStatic;
         Corrida.#idCorridaStatic++;

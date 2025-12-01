@@ -1,13 +1,11 @@
 import { Corrida } from "./Corrida.js";
 
 export class Maratona extends Corrida{
-    #modalidade;
     #altimetria;
 
-    constructor(dataCorrida,limiteCorredores,nomeCorrida,distancia,modalidade, altimetria){
+    constructor(nomeCorrida, distancia, dataCorrida, limiteCorredores, altimetria){
         super(dataCorrida, limiteCorredores, nomeCorrida, distancia);
         
-        this.#modalidade = modalidade;
         this.#altimetria = altimetria;
     }
 
