@@ -24,4 +24,4 @@ console.log(mar1.toString());
 console.log(cor2.toString());
 console.log(trail.toString());
 
-//FAZER RELATORIO, um "toString" com as var de corrida armazenada nas pessoas
+console.log(teste.relatorio());

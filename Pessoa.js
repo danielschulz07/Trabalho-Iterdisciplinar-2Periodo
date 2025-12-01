@@ -19,9 +19,7 @@ export class Pessoa {
         this.#idPessoa = Pessoa.#idPessoaStatic;
         Pessoa.#idPessoaStatic++;
     }
-    /*... as implementações dos métodos get e set seguem
-    os códigos mostrados anteriormente para a classe Cliente
-    */
+
 
     static get idPessoa(){
         return this.idPessoa;
@@ -62,6 +60,12 @@ export class Pessoa {
         "\nCPF: " + this.#cpf +
         "\nNascimento: " + this.#dtNascimento);
     } 
+
+    relatorio() {
+        return ("\nNome: " + this.#nome +
+            "\nNumero de corridas: " + this.#qtdCorridasPassadas +
+            "\nNome das corridas: " + this.nomeCorridasPassadas);
+    }
 
     historico(pessoa, nomeCorrida) {
         if(pessoa == this.idPessoa){
