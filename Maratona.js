@@ -1,11 +1,11 @@
-import { Corrida } from "./Corrida.js";
+import { Corrida } from "./Competicao.js";
 
-export class Maratona extends Corrida{
+export class Maratona extends Competicao{
     #altimetria;
     #qtdPontoApoio;
 
-    constructor(nomeCorrida, distancia, dataCorrida, limiteCorredores, altimetria, qtdPontoApoio){
-        super(dataCorrida, limiteCorredores, nomeCorrida, distancia);
+    constructor(nome, distancia, data, limiteCorredores, altimetria, qtdPontoApoio){
+        super(data, limiteCorredores, nome, distancia);
         
         this.#altimetria = altimetria;
         this.#qtdPontoApoio = qtdPontoApoio;

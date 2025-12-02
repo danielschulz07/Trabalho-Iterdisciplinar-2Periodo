@@ -1,12 +1,12 @@
-import { Corrida } from "./Corrida.js";
+import { Competicao } from "./Competicao.js";
 
-export class TrailRunning extends Corrida{
+export class TrailRunning extends Competicao{
     #qtdCheckpoints;
     #modalidade;
     #nivelDificuldade;
 
-    constructor(nomeCorrida, distancia, dataCorrida,limiteCorredores,qtdCheckpoints, modalidade, nivelDificuldade){
-        super(dataCorrida, limiteCorredores, nomeCorrida, distancia);
+    constructor(nome, distancia, data,limiteCorredores,qtdCheckpoints, modalidade, nivelDificuldade){
+        super(data, limiteCorredores, nome, distancia);
 
         this.#qtdCheckpoints = qtdCheckpoints;
         this.#modalidade = modalidade;
