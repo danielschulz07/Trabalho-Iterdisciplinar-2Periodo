@@ -5,7 +5,7 @@ export class Competicao {
     #distancia;
     #data;
     #limiteCorredores;
-    #listaCorredores = [];
+    #listaCorredores = [];//relatorio precisa do num de valores aq, faz calculo com .lenght
 
 
     constructor(nome, distancia, data, limiteCorredores){

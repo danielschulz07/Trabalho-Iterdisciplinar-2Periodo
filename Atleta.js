@@ -5,7 +5,7 @@ export class Atleta {
     #cpf;
     #idade;
     #dtNascimento;
-    #qtdCorridasPassadas = 0;
+    #qtdCorridasPassadas = 0;//otimizar colocando um calculo de .lenght?
     #nomeCorridasPassadas = [];
     #tipoCorridasPassadas = [];
 
@@ -28,6 +28,7 @@ export class Atleta {
     get nome(){
         return this.#nome;
     }
+
     set nome(nome){
         if (nome.length != 0){
             this.#nome = nome;
@@ -36,6 +37,10 @@ export class Atleta {
 
     get cpf(){
         return this.#cpf;
+    }
+
+    set cpf(cpf){
+        this.#cpf = cpf;
     }
 
     get dtNascimento(){
