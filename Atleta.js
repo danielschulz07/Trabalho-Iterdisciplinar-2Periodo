@@ -4,16 +4,14 @@ export class Atleta {
     #nome;
     #cpf;
     #idade;
-    #dtNascimento;
     #qtdCorridasPassadas = 0;
     #nomeCorridasPassadas = [];
     #tipoCorridasPassadas = [];
 
-    constructor (nome, cpf, dtNasc, idade) {
+    constructor (nome, cpf, idade) {
         this.#nome = nome;
         this.#cpf = cpf;
         this.#idade = idade;
-        this.#dtNascimento = dtNasc;
 
         this.#id = Atleta.#idStatic;
         Atleta.#idStatic++;
@@ -37,14 +35,6 @@ export class Atleta {
     get cpf(){
         return this.#cpf;
     }
-
-    get dtNascimento(){
-        return this.#dtNascimento;
-    }
-
-    set dtNascimento(dtNascimento){
-        this.#dtNascimento = dtNascimento;
-    }
     
     get qtdCorridasPassadas(){
         return this.#qtdCorridasPassadas;
@@ -56,8 +46,7 @@ export class Atleta {
 
     toString() {
         return ("\nNome: " + this.#nome +
-        "\nCPF: " + this.#cpf +
-        "\nNascimento: " + this.#dtNascimento);
+        "\nCPF: " + this.#cpf);
     } 
 
     relatorio() {

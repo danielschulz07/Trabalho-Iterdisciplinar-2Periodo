@@ -2,19 +2,19 @@ export class Competicao {
     static #idStatic = 0;
     #id;
     #nome;
+    #altimetria;
     #distancia;
     #data;
     #limiteCorredores;
     #listaCorredores = [];
 
 
-    constructor(nome, distancia, data, limiteCorredores){
+    constructor(nome, distancia, data, limiteCorredores, altimetria){
         this.#nome = nome;
         this.#distancia = distancia;
         this.#data = data;
         this.#limiteCorredores = limiteCorredores;
-
-
+        this.#altimetria = altimetria;
         this.#id = Competicao.#idStatic;
         Competicao.#idStatic++;
     }

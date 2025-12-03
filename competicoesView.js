@@ -4,7 +4,6 @@ import * as CompeticoesControl from "./competicoesControl.js";
 
 
 const inNome = document.getElementById("inNome");
-const dtDataNasc = document.getElementById("dtDataNasc");
 const inIdade = document.getElementById("inIdade");
 const inCpf = document.getElementById("inCpf");
 const btInscrever = document.getElementById("btInscrever");
@@ -31,7 +30,6 @@ btInscrever.addEventListener('click', function (){
 let nome = (inNome.value).toUpperCase();
 let nomeCompeticaoSlc = (inNomeCorridaSelecionada.value).toUpperCase();
 let opcao = slcOpcaoCorrida.value;
-let dtNascPessoa = new Date(dtDataNasc.value + "T00:00:00");
 let idade = Number(inIdade.value);
 let cpf = inCpf.value;
 
@@ -39,10 +37,6 @@ let cpf = inCpf.value;
         outSaida.style.color = "red";
         outSaida.textContent = "O campo Nome deve ser preenchido!";
         inNome.focus();
-    } else if (dtNascPessoa == undefined) {
-        outSaida.style.color = "red";
-        outSaida.textContent = "Deve ser preenchido uma data válida";
-        dtDataNasc.focus();
     } else if (idade == "" || idade < 18) {
         outSaida.style.color = "red";
         outSaida.textContent = "Deve ser preenchido uma idade válida";
