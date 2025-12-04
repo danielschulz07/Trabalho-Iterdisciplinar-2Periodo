@@ -4,19 +4,21 @@ export class TrailRunning extends Competicao{
     #qtdCheckpoints;
     #modalidade;
     #nivelDificuldade;
-
-    constructor(nome, distancia, data,limiteCorredores,qtdCheckpoints, modalidade, nivelDificuldade){
+    #tipoTerreno;
+    constructor(nome, distancia, data,limiteCorredores,qtdCheckpoints, modalidade, nivelDificuldade, tipoTerreno){
         super(data, limiteCorredores, nome, distancia);
 
         this.#qtdCheckpoints = qtdCheckpoints;
         this.#modalidade = modalidade;
         this.#nivelDificuldade = nivelDificuldade;
-    }
+        this.#tipoTerreno = tipoTerreno;
+    }   
 
     toString() {
         return (super.toString() +
             "\nCheckpoints: " + this.#qtdCheckpoints +
             "\nModalidade: " + this.#modalidade +
-            "\nDificuldade: " + this.#nivelDificuldade);
+            "\nDificuldade: " + this.#nivelDificuldade +
+            "\nTipoTerreno: " + this.#tipoTerreno);
     }
 }
