@@ -13,22 +13,23 @@
             <a href="index.html">HOME</a>
             <a href="inscricaoCompetidor.html">INSCREVA-SE</a>
             <a href="inscricaoCompeticao.html">CADASTRAR COMPETIÇÃO</a>
+            <a href="vincularAtleta.html">VINCULAR ATLETA</a>
+            <a href="relatorio.html">RELATORIO GERAL</a>
         </nav>
     </header>
     <main>
         <div class="wrapper">
             <div class="box">
 
-                <h2>Cadastro de Corrida</h2>
-                <label>Nome da corrida</label>
+                <h2>Cadastro de Competição</h2>
+                <label>Nome da Competição</label>
                 <input id="inNomeCorrida" type="text" placeholder="Ex: Trail Run Serra">
                 <label>Distância (km)</label>
                 <input id="inDistancia" type="number" placeholder="Ex: 10">
-                <label>Data da corrida</label>
+                <label>Data da Competição</label>
                 <input id="dtCorrida" type="date">
-                <label>Quantidade de Competidores </label>
-                <input id="inQtdCompetidores" type="date">
-
+                <label>Quantidade de Atletas </label>
+                <input id="inQtdCompetidores" type="number" placeholder="Digite a quantidade de Competidores">
 
                 <label>Modalidade</label>
                 <select name="opcao" id="slcOpcaoModalidade">
@@ -37,6 +38,7 @@
                     <option value="TrailRunning">Trail Running</option>
                 </select>
 
+
                 <hr style="margin: 25px 0; border-color: #14532d;">
 
                 <!-- MARATONA -->
@@ -44,8 +46,7 @@
 
                 <label>Ganho de elevação (m)</label>
                 <input id="inGanhoElevacao" type="number" placeholder="Ex: 350">
-
-                <label>Quantidade de Pontos de Apoios</label>
+                <label>Quantidade de checkpoint</label>
                 <input id="qtdCheckpointMaratona" type="number" placeholder="Ex: 12">
 
                 <hr style="margin: 25px 0; border-color: #14532d;">
@@ -72,37 +73,31 @@
                     <option value="Dificil">Difícil</option>
                     <option value="MuitoDificil">Muito Difícil</option>
                 </select>
-                <input class="button" type="button" id="btCadastrarCorrida" value="Cadastrar Corrida">
+                <input class="button" type="button" id="btCadastrarCorrida" value="Cadastrar Competição">
+                <p id="outSaida"></p>
             </div>
         </div>
         <div class="lista-competidores">
-    <h2>Lista de Competidores</h2>
+            <h2>Lista de Competidores</h2>
 
-    <table id="tabelaCompetidores">
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Idade</th>
-                <th>CPF</th>
-                <th>Modalidade</th>
-                <th>Corrida</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
+            <table id="tabelaCompetidores">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Idade</th>
+                        <th>CPF</th>
+                        <th>Modalidade</th>
+                        <th>Competição</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
 
-        <tbody>
-            <!-- Os competidores serão adicionados aqui via JavaScript -->
-        </tbody>
-    </table>
-</div>
-
-
-
-
-
-
-
+                <tbody>
+                    <!-- Os competidores serão adicionados aqui via JavaScript -->
+                </tbody>
+            </table>
+        </div>
     </main>
 </body>
-<script src="./backend/competicoesView.js" type="module"></script>
+   <script src="./competicoesView.js" type="module"></script>
 </html>

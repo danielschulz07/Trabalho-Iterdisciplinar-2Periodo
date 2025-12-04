@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema para Gerenciamento de Corridas</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header>
+        <div class="logo">RUNNING SYSTEM</div>
+        <nav>
+            <a href="index.html">HOME</a>
+            <a href="inscricaoCompetidor.html">INSCREVA-SE</a>
+            <a href="inscricaoCompeticao.html">CADASTRAR COMPETIÇÃO</a>
+            <a href="vincularAtleta.html">VINCULAR ATLETA</a>
+            <a href="relatorio.html">RELATORIO GERAL</a>
+        </nav>
+    </header>
+    <main>
+        <div class="wrapper">
+            <!-- BOX 2 - CADASTRO DE CORREDORES -->
+            <div class="box">
+
+                <h2>Vincular Atleta a Competição</h2>
+                <label>Nome do corredor</label>
+                <input id="inNome" type="text" placeholder="Nome completo">
+                <label>CPF</label>
+                <input id="inCpf" type="number" placeholder="CPF">
+                <label>Escolha a Competição que Participará</label>
+                <input id="inNomeCorridaSelecionada" placeholder="Nome da Corrida">
+                <input class="button" type="button" id="btInscrever" value="Inscrever Atleta a Competição">
+                <p id="outSaida"></p>
+            </div>
+        </div>
+    </main>
+</body>
+   <script src="./competicoesView.js" type="module"></script>
+</html>

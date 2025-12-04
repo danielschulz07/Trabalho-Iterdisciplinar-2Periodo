@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema para Gerenciamento de Corridas</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header>
+        <div class="logo">RUNNING SYSTEM</div>
+        <nav>
+            <a href="index.html">HOME</a>
+            <a href="inscricaoCompetidor.html">INSCREVA-SE</a>
+            <a href="inscricaoCompeticao.html">CADASTRAR COMPETIÇÃO</a>
+            <a href="vincularAtleta.html">VINCULAR ATLETA</a>
+            <a href="relatorio.html">RELATORIO GERAL</a>
+        </nav>
+    </header>
+    <main>
+
+        <div class="lista-competidores">
+            <h2>Lista de Competidores</h2>
+
+            <table id="tabelaCompetidores">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Idade</th>
+                        <th>CPF</th>
+                        <th>Modalidade</th>
+                        <th>Corrida</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <!-- Os competidores serão adicionados aqui via JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+   <script src="./competicoesView.js" type="module"></script>
+</html>

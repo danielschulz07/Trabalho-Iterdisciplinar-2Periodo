@@ -277,6 +277,15 @@ main {
     flex: 1; /* Faz o input ocupar o espaço maior */
 }
 
+.btnExcluir {
+    padding: 8px 16px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 .btnBuscar {
     padding: 8px 16px;
     background-color: #1f6feb;
@@ -284,10 +293,6 @@ main {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-}
-
-.btnBuscar:hover {
-    background-color: #124ea0;
 }
 
 
