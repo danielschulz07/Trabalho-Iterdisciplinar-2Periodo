@@ -7,10 +7,10 @@ const inNome = document.getElementById("inNome");
 const dtDataNasc = document.getElementById("dtDataNasc");
 const inIdade = document.getElementById("inIdade");
 const inCpf = document.getElementById("inCpf");
-//const inNomeCorridaSelecionada = document.getElementById("inNomeCorridaSelecionada");
+const inNomeCorridaSelecionada = document.getElementById("inNomeCorridaSelecionada");
 const btInscrever = document.getElementById("btInscrever");
 const outSaida = document.getElementById("outSaida");
-
+const btnExcluir = document.getElementById("btnExcluir");
 const inNomeCorrida = document.getElementById("inNomeCorrida");
 const inDistancia = document.getElementById("inDistancia");
 const dtCorrida = document.getElementById("dtCorrida");
@@ -19,7 +19,8 @@ const inGanhoElevacao = document.getElementById("inGanhoElevacao");
 const qtdCheckpointMaratona = document.getElementById("qtdCheckpointMaratona");
 const qtdCheckpointTrail = document.getElementById("qtdCheckpointTrail");
 const btCadastrarCorrida = document.getElementById("btCadastrarCorrida");
-
+const btInscreverAtletaComp = document.getElementById("btInscreverAtletaComp");
+const btnBuscar = document.getElementById("btnBuscar");
 const slcOpcaoCorrida = document.getElementById("slcOpcaoCorrida");
 const slcOpcaoModalidade = document.getElementById("slcOpcaoModalidade");
 const slcOpcaoModalidadeTrail = document.getElementById("slcOpcaoModalidadeTrail");
@@ -165,3 +166,87 @@ if (btCadastrarCorrida) {
         }
     });
 }
+/*
+btInscreverAtletaComp.addEventListener('click', function () {
+    let nome = (inNome.value).toUpperCase();
+    let cpf = inCpf.value;
+    let corridaSelecionada = (inNomeCorridaSelecionada.value).toUpperCase();
+
+        if (nome == "") {
+            outSaida.style.color = "red";
+            outSaida.textContent = "O campo Nome deve ser preenchido!";
+            inNome.focus();
+        } else if (cpf.length != 11) {
+            outSaida.style.color = "red";
+            outSaida.textContent = "Deve ser preenchido uma CPF válido";
+            inCpf.focus();
+        } else if(corridaSelecionada == ""){
+            outSaida.style.color = "red";
+            outSaida.textContent = "Deve ser preenchido a corrida que o Atleta ira Participar";
+            inNomeCorridaSelecionada.focus();
+        } else{
+            if (AtletaControl.adicionarAtleta(nome, dtNascPessoa, idade, cpf, opcao) == true) {
+                outSaida.style.color = "blue";
+                outSaida.textContent = "O novo produto foi acrescentado com sucesso!";
+            } else {
+                outSaida.style.color = "red";
+                outSaida.textContent = "Erro! O Competidor " + nome + " já estava cadastrado!";
+                inNome.focus();
+            }  
+
+
+
+        }
+    })
+    */
+
+
+btnExcluir.addEventListener('click', function () {
+    let nome = (inNome.value).toUpperCase();
+
+    if(nome == ""){
+        outSaida.style.color = "red";
+        outSaida.textContent = "Erro! O Competidor " + nome + " não existe!";
+        inNome.focus();
+    } else{
+        if(AtletaControl.excluirAtleta(nome)){
+            outSaida.style.color = "blue";
+            outSaida.textContent = "O Atleta" + nome + " foi excluído com sucesso!"
+        } else{
+            outSaida.style.color = "red";
+            outSaida.textContent = "O Atleta que deseja excluir não está cadastrado!";
+        }
+    }
+})
+
+btnBuscar.addEventListener('click', function () {
+/*
+
+                if (mes < 1 || mes > 12) {
+                outResultado.style.color = "red";
+                outResultado.textContent = "Ops, digite um mês de 1-12!";
+                inMes.focus();
+            } else {
+                if (inQtd.value == "" || quantidade < 0) {
+                    outResultado.style.color = "red";
+                    outResultado.textContent = "Para alterar quantidade vendida, o campo Quantidade deve ser preenchido com valor >= 0 !";
+                    inQtd.focus();
+                } else {
+                    let produto = ArmazemControlProduto.alterarProduto(descrProduto, mes, quantidade, cnpj);
+                    if (produto != null) {
+                        outResultado.style.color = "blue";
+                        outResultado.textContent = "O produto " + produto.descricao + " foi alterado no mês " + mes + " tendo como quantidade vendida : " + produto.getQtdVendasMes(mes);
+                    } else {
+                        outResultado.style.color = "red";
+                        outResultado.textContent = "O produto que deseja alterar não está cadastrado";
+                    }
+                }
+            }
+
+
+            break;
+            */
+})
+
+
+
