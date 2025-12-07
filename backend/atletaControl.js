@@ -1,25 +1,34 @@
-//import * as CompeticoesModel from "./competicoesModel";
-import { Atleta } from "./Atleta.js";
-
- const vetAtletas = [];
-
-export function pesquisarAtleta(nome){
-    let indAtleta = vetAtletas.findIndex(objProd => objProd.nome == nome);
-    return (indAtleta == -1) ? null : vetAtletas[indAtleta];
-}
+import * as vetAtletas from "./atletaModel.js";
 
 
-export function adicionarAtleta(nome, dtNascPessoa, idade, cpf, opcao){
-    let atleta = pesquisarAtleta(nome);
-
-    if(atleta == null){
-        atleta = new Atleta(nome, dtNascPessoa, idade, cpf, opcao)
-        vetAtletas.push(atleta);
-        console.log(vetAtletas);
-        return true;
+export function adicionar(nome){
+    if(vetAtletas.inserirAtleta(vetAtletas, nome) == true){
+        return "Atleta inserido com sucesso!"
     }
-    return false;
+    return "Erro! O Atleta " + nome + " já estava cadastrado!"
 }
+
+
+
+
+/*
+export function inserir(elemento) {
+    if (Vetor.inserirVetor(vetor, elemento) == true) {
+        return "Elemento inserido com sucesso";
+    }
+    return "Elemento já existe"; // elemnento não incluído, pois já existe no vetor
+}
+*/
+
+
+
+
+
+
+
+
+
+
 
 export function excluirAtleta(nome){
     let indAtleta = vetAtletas.findIndex(objProd => objProd.nome == nome);

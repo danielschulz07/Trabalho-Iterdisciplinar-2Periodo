@@ -1,7 +1,4 @@
 import * as AtletaControl from "./atletaControl.js";
-import * as CompeticaoControl from "./competicaoControl.js"
-
-
 
 const inNome = document.getElementById("inNome");
 const dtDataNasc = document.getElementById("dtDataNasc");
@@ -38,7 +35,7 @@ if (btInscrever) {
         let idade = Number(inIdade.value);
         let cpf = inCpf.value;
 
-        if (nome == "") {
+        /*if (nome == "") {
             outSaida.style.color = "red";
             outSaida.textContent = "O campo Nome deve ser preenchido!";
             inNome.focus();
@@ -58,8 +55,10 @@ if (btInscrever) {
             outSaida.style.color = "red";
             outSaida.textContent = "Selecione a modadalidade de Competição";
             slcOpcaoCorrida.focus();
-        } else {
-            if (AtletaControl.adicionarAtleta(nome, dtNascPessoa, idade, cpf, opcao) == true) {
+        } else {*/
+            outSaida.innerHTML = AtletaControl.adicionar(nome, dtNascPessoa, idade, cpf, opcao);
+            /*
+            if (AtletaControl.adicionar(nome, dtNascPessoa, idade, cpf, opcao) == true) {
                 outSaida.style.color = "blue";
                 outSaida.textContent = "O novo produto foi acrescentado com sucesso!";
             } else {
@@ -67,7 +66,8 @@ if (btInscrever) {
                 outSaida.textContent = "Erro! O Competidor " + nome + " já estava cadastrado!";
                 inNome.focus();
             }
-        }
+            */
+        //}
     })
 }
 
