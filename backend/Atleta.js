@@ -5,9 +5,6 @@ export class Atleta {
     #idade;
     #cpf;
     #opcao
-    #qtdCorridasPassadas = 0;
-    #nomeCorridasPassadas = [];
-    #tipoCorridasPassadas = [];
 
     constructor (nome, idade, cpf, opcao) {
         this.#nome = nome;
@@ -49,14 +46,6 @@ export class Atleta {
         return this.#opcao;
     }
 
-    get qtdCorridasPassadas(){
-        return this.#qtdCorridasPassadas;
-    }
-
-    get nomeCorridasPassadas(){
-        return this.#nomeCorridasPassadas;
-    }
-
     toString() {
         return ("\nNome: " + this.#nome +
         "\nCPF: " + this.#cpf +
@@ -66,15 +55,7 @@ export class Atleta {
 
     relatorio() {
         return ("\nNome: " + this.#nome +
-            "\nNumero de corridas: " + this.#qtdCorridasPassadas +
             "\nNome das corridas: " + this.nomeCorridasPassadas);
     }
 
-    historico(atleta, nomeCorrida, tipoCorrida) {
-        if(atleta == this.id){
-            this.#qtdCorridasPassadas++;
-            this.#nomeCorridasPassadas.push(nomeCorrida);
-            this.#tipoCorridasPassadas.push(tipoCorrida);
-        }
-    }
 }

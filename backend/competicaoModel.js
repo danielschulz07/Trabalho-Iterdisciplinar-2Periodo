@@ -2,6 +2,7 @@ import { Atleta } from "./Atleta.js";
 import { Competicao } from "./Competicao.js";
 import { TrailRunning } from "./TrailRunning.js";
 import { Maratona } from "./Maratona.js";
+import { Competidor } from "./Competidor.js";
 
 
 var teste = new Atleta(1213,3123,123,123);
