@@ -20,14 +20,66 @@ export function inserirAtleta(nome, dtNascPessoa, idade, cpf, opcao){
     return false;
 }
 
+export function excluirAtleta(nome){
+    let indAtleta = vetAtletas.findIndex(objProd => objProd.nome == nome);
 
-/*
-export function inserirVetor(vetor,elemento) {
-    if (vetor.includes(elemento) == false) {
-        vetor.push(elemento);
+    if (indAtleta >= 0) {
+        vetAtletas.splice(indAtleta, 1);
         return true;
     }
-    return false; // elemento não incluído, pois já existe no vetor
+    return false;
 }
+
+export function alterarAtleta(nome, novosDados) {
+    let atleta = pesquisarAtleta(nome);
+
+    if (!atleta) return false;
+
+    atleta.nome = novosDados.nome;
+    atleta.dtNascPessoa = novosDados.dtNascPessoa;
+    atleta.idade = novosDados.idade;
+    atleta.cpf = novosDados.cpf;
+    atleta.opcao = novosDados.opcao;
+
+    return true;
+}
+
+
+
+/*
+export function alterarAtleta(nome, dadosAtleta){
+    let atletaEncontrado = pesquisarAtleta(nome);
+
+    if(atletaEncontrado != null){
+        return dadosAtleta = atletaEncontrado;
+       //atletaEncontrado.dtNascPessoa = novosDados.dtNascPessoa;
+      //  atletaEncontrado.idade = novosDados.idade;
+        //atletaEncontrado.cpf = novosDados.cpf;
+       // atletaEncontrado.opcao = novosDados.opcao;        
+    }
+    return false;
+}
+*/
+
+
+
+/*
+
+let atleta = AtletaControl.pesquisar(nome);
+
+if (atleta != null) {
+    // Aqui atleta é um OBJETO
+    outSaida.style.color = "green";
+    outSaida.textContent = "Atleta encontrado!";
+
+    // Se quiser exibir os dados na tela:
+    outSaida.innerHTML =
+        "Nome: " + atleta.nome + "<br>" +
+        "Nascimento: " + atleta.dtNascPessoa + "<br>" +
+        "Idade: " + atleta.idade + "<br>" +
+        "CPF: " + atleta.cpf + "<br>" +
+        "Opção: " + atleta.opcao;
+
+
 
 */

@@ -34,8 +34,8 @@ if (btInscrever) {
         let dtNascPessoa = new Date(dtDataNasc.value);
         let idade = Number(inIdade.value);
         let cpf = inCpf.value;
-
-        /*if (nome == "") {
+        
+        if (nome == "") {
             outSaida.style.color = "red";
             outSaida.textContent = "O campo Nome deve ser preenchido!";
             inNome.focus();
@@ -55,27 +55,99 @@ if (btInscrever) {
             outSaida.style.color = "red";
             outSaida.textContent = "Selecione a modadalidade de Competição";
             slcOpcaoCorrida.focus();
-        } else {*/
+        } else {
+            outSaida.style.color = "black";
             outSaida.innerHTML = AtletaControl.adicionar(nome, dtNascPessoa, idade, cpf, opcao);
-            /*
-            if (AtletaControl.adicionar(nome, dtNascPessoa, idade, cpf, opcao) == true) {
-                outSaida.style.color = "blue";
-                outSaida.textContent = "O novo produto foi acrescentado com sucesso!";
-            } else {
-                outSaida.style.color = "red";
-                outSaida.textContent = "Erro! O Competidor " + nome + " já estava cadastrado!";
-                inNome.focus();
-            }
-            */
-        //}
+        }
     })
 }
 
+btnExcluir.addEventListener('click', function () {
+    let nome = (inNome.value).toUpperCase();
+
+    if(nome == ""){
+        outSaida.style.color = "red";
+        outSaida.textContent = "Erro! O campo nome deve ser preenchido";
+        inNome.focus();
+    } else{
+        outSaida.style.color = "black";
+        outSaida.innerHTML = AtletaControl.excluir(nome);
+    }
+})
+
+btnBuscar.addEventListener('click', function () {
+    let nome = (inNome.value).toUpperCase();
+    let opcao = slcOpcaoCorrida.value;
+    let dtNascPessoa = new Date(dtDataNasc.value);
+    let idade = Number(inIdade.value);
+    let cpf = inCpf.value;
+
+    if (nome == "") {
+        outSaida.style.color = "red";
+        outSaida.textContent = "Erro! O campo nome deve ser preenchido";
+        inNome.focus();
+        return;
+    } else {
+
+        let resposta = AtletaControl.modificar(nome, {
+            nome: inNome.value,
+            dtNascPessoa: dtDataNasc.value,
+            idade: Number(inIdade.value),
+            cpf: inCpf.value,
+            opcao: slcOpcaoCorrida.value
+        });
+
+        if (resposta.erro) {
+            outSaida.textContent = resposta.erro;
+        } else {
+            outSaida.textContent = "Atleta atualizado com sucesso!";
+        }
+        //outSaida.style.color = "black";
+        //outSaida.innerHTML = AtletaControl.modificar(nome, dtNascPessoa, idade, cpf, opcao);
+        //inNome.textContent = 
+    }
+
+
+    
+    
+    
+    
+    //else{
+    //    outSaida.style.color = "black";
+     //   outSaida.innerHTML = AtletaControl.modificar(nome, dtNascPessoa, idade, cpf, opcao);
+  //  }
+ /*
+
+                if (mes < 1 || mes > 12) {
+                outResultado.style.color = "red";
+                outResultado.textContent = "Ops, digite um mês de 1-12!";
+                inMes.focus();
+            } else {
+                if (inQtd.value == "" || quantidade < 0) {
+                    outResultado.style.color = "red";
+                    outResultado.textContent = "Para alterar quantidade vendida, o campo Quantidade deve ser preenchido com valor >= 0 !";
+                    inQtd.focus();
+                } else {
+                    let produto = ArmazemControlProduto.alterarProduto(descrProduto, mes, quantidade, cnpj);
+                    if (produto != null) {
+                        outResultado.style.color = "blue";
+                        outResultado.textContent = "O produto " + produto.descricao + " foi alterado no mês " + mes + " tendo como quantidade vendida : " + produto.getQtdVendasMes(mes);
+                    } else {
+                        outResultado.style.color = "red";
+                        outResultado.textContent = "O produto que deseja alterar não está cadastrado";
+                    }
+                }
+            }
+
+
+            break;
+            */
+})
 
 
 if (btCadastrarCorrida) {
     btCadastrarCorrida.addEventListener('click', function () {
-
+        
         let nomeCompeticao = (inNomeCorrida.value).toUpperCase();
         let distancia = Number(inDistancia.value);
         let dataCorrida = new Date(dtCorrida.value);
@@ -201,52 +273,6 @@ btInscreverAtletaComp.addEventListener('click', function () {
     */
 
 
-btnExcluir.addEventListener('click', function () {
-    let nome = (inNome.value).toUpperCase();
-
-    if(nome == ""){
-        outSaida.style.color = "red";
-        outSaida.textContent = "Erro! O Competidor " + nome + " não existe!";
-        inNome.focus();
-    } else{
-        if(AtletaControl.excluirAtleta(nome)){
-            outSaida.style.color = "blue";
-            outSaida.textContent = "O Atleta" + nome + " foi excluído com sucesso!"
-        } else{
-            outSaida.style.color = "red";
-            outSaida.textContent = "O Atleta que deseja excluir não está cadastrado!";
-        }
-    }
-})
-
-btnBuscar.addEventListener('click', function () {
-/*
-
-                if (mes < 1 || mes > 12) {
-                outResultado.style.color = "red";
-                outResultado.textContent = "Ops, digite um mês de 1-12!";
-                inMes.focus();
-            } else {
-                if (inQtd.value == "" || quantidade < 0) {
-                    outResultado.style.color = "red";
-                    outResultado.textContent = "Para alterar quantidade vendida, o campo Quantidade deve ser preenchido com valor >= 0 !";
-                    inQtd.focus();
-                } else {
-                    let produto = ArmazemControlProduto.alterarProduto(descrProduto, mes, quantidade, cnpj);
-                    if (produto != null) {
-                        outResultado.style.color = "blue";
-                        outResultado.textContent = "O produto " + produto.descricao + " foi alterado no mês " + mes + " tendo como quantidade vendida : " + produto.getQtdVendasMes(mes);
-                    } else {
-                        outResultado.style.color = "red";
-                        outResultado.textContent = "O produto que deseja alterar não está cadastrado";
-                    }
-                }
-            }
-
-
-            break;
-            */
-})
 
 
 

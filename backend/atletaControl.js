@@ -1,63 +1,39 @@
 import * as vetAtletas from "./atletaModel.js";
 
-
-export function adicionar(nome){
-    if(vetAtletas.inserirAtleta(vetAtletas, nome) == true){
+export function adicionar(nome, dtNascPessoa, idade, cpf, opcao) {
+    if (vetAtletas.inserirAtleta(nome, dtNascPessoa, idade, cpf, opcao) == true) {
         return "Atleta inserido com sucesso!"
     }
     return "Erro! O Atleta " + nome + " já estava cadastrado!"
 }
 
+export function excluir(nome) {
+    if (vetAtletas.excluirAtleta(nome, vetAtletas) == true) {
+        return "Atleta excluido com sucesso!";
+    }
+    return "O Atleta não existe para excluir!";
+}
+
+export function modificar(nome, dtNascPessoa, idade, cpf, opcao, dadosAtleta){
+    if(vetAtletas.alterarAtleta(nome, dtNascPessoa, idade, cpf, opcao)){
+        return dadosAtleta
+    }
+    return "Não existe este Atleta Buscado!";
+}
 
 
 
 /*
-export function inserir(elemento) {
-    if (Vetor.inserirVetor(vetor, elemento) == true) {
-        return "Elemento inserido com sucesso";
+
+export function modificar(nomeOriginal, dadosAtleta) {
+
+    let ok = Model.alterarAtleta(nomeOriginal, dadosAtleta);
+
+    if (!ok) {
+        return { erro: "Atleta não encontrado!" };
     }
-    return "Elemento já existe"; // elemnento não incluído, pois já existe no vetor
-}
-*/
 
-
-
-
-
-
-
-
-
-
-
-export function excluirAtleta(nome){
-    let indAtleta = vetAtletas.findIndex(objProd => objProd.nome == nome);
-
-    if (indAtleta >= 0) {
-        vetAtletas.splice(indAtleta, 1);
-        return true;
-    }
-    return false;
-}
-
-
-/*
-export function alterarProduto(descrProduto, mes, quantidade, cnpj) {
-    let produto = pesquisarProdVet(descrProduto);
-
-    if (produto != null) { //indica que produto existe no vetor
-        produto.setQtdVendasMes(quantidade, mes);
-        console.log("Quantidade do mês alterada para o produto indicado!");
-
-        let fornecedor = consultarFornecedor(cnpj);
-        if(fornecedor != null){
-            produto.fornecedor = fornecedor;
-            console.log("Fornecedor alterado para o produto indicado.");
-        } else {
-            console.log("Fornecedor indicado não existe e não foi alterado no produto.")
-        }
-    }
-    return produto;
+    return { sucesso: dadosAtleta };
 }
 
 */
