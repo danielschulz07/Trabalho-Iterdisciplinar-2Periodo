@@ -4,24 +4,24 @@ export class Atleta {
     #nome;
     #idade;
     #cpf;
-    #opcao
-    #qtdCorridasPassadas = 0;
-    #nomeCorridasPassadas = [];
-    #tipoCorridasPassadas = [];
+    #nacionalidade;
+    #modalidade;
 
-    constructor (nome, idade, cpf, opcao) {
+
+    constructor (nome, idade, cpf, nacionalidade, modalidade) {
         this.#nome = nome;
         this.#idade = idade;
         this.#cpf = cpf;
-        this.#opcao = opcao;
+        this.#nacionalidade = nacionalidade;
+        this.#modalidade = modalidade;
 
         this.#id = Atleta.#idStatic;
         Atleta.#idStatic++;
     }
 
 
-    static get id(){
-        return this.id;
+    get id(){
+        return this.#id;
     }
 
 
@@ -40,41 +40,42 @@ export class Atleta {
         return this.#idade;
     }
 
+    set idade(idade){
+        if(idade >= 18){
+        this.#idade = idade;
+        }
+    }
+
 
     get cpf(){
         return this.#cpf;
     }
+
+    set cpf(cpf){
+        this.#cpf = cpf;
+    }
+
+    get nacionalidade(){
+        return this.#nacionalidade;
+    }
+
+    set nacionalidade(nacionalidade){
+        this.#nacionalidade = nacionalidade;
+    }
     
-    get opcao(){
-        return this.#opcao;
+    get modalidade(){
+        return this.#modalidade;
     }
 
-    get qtdCorridasPassadas(){
-        return this.#qtdCorridasPassadas;
-    }
-
-    get nomeCorridasPassadas(){
-        return this.#nomeCorridasPassadas;
+    set modalidade(modalidade){
+        this.#modalidade = modalidade;
     }
 
     toString() {
         return ("\nNome: " + this.#nome +
-        "\nCPF: " + this.#cpf +
         "\nIdade: " + this.#idade +
-        "\nOpção Corrida: " + this.#opcao);
+        "\nCPF: " + this.#cpf +
+        "\nNacionalidade: " + this.#nacionalidade +
+        "\nOpção Corrida: " + this.#modalidade);
     } 
-
-    relatorio() {
-        return ("\nNome: " + this.#nome +
-            "\nNumero de corridas: " + this.#qtdCorridasPassadas +
-            "\nNome das corridas: " + this.nomeCorridasPassadas);
-    }
-
-    historico(atleta, nomeCorrida, tipoCorrida) {
-        if(atleta == this.id){
-            this.#qtdCorridasPassadas++;
-            this.#nomeCorridasPassadas.push(nomeCorrida);
-            this.#tipoCorridasPassadas.push(tipoCorrida);
-        }
-    }
 }

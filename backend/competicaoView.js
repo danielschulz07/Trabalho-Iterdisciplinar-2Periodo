@@ -4,10 +4,12 @@ const inNome = document.getElementById("inNome");
 const inIdade = document.getElementById("inIdade");
 const inCpf = document.getElementById("inCpf");
 const inNacionalidade = document.getElementById("inNacionalidade");
+const idBuscar = document.getElementById("idBuscar");
 const inNomeCorridaSelecionada = document.getElementById("inNomeCorridaSelecionada");
 const btInscrever = document.getElementById("btInscrever");
+const btAlterar = document.getElementById("btAlterar");
 const outSaida = document.getElementById("outSaida");
-const btnExcluir = document.getElementById("btnExcluir");
+const btExcluir = document.getElementById("btExcluir");
 const inNomeCorrida = document.getElementById("inNomeCorrida");
 const inDistancia = document.getElementById("inDistancia");
 const dtCorrida = document.getElementById("dtCorrida");
@@ -17,14 +19,12 @@ const qtdCheckpointMaratona = document.getElementById("qtdCheckpointMaratona");
 const qtdCheckpointTrail = document.getElementById("qtdCheckpointTrail");
 const btCadastrarCorrida = document.getElementById("btCadastrarCorrida");
 const btInscreverAtletaComp = document.getElementById("btInscreverAtletaComp");
-const btnBuscar = document.getElementById("btnBuscar");
+const btBuscar = document.getElementById("btBuscar");
+const btCancelar = document.getElementById("btCancelar");
 const slcOpcaoCorrida = document.getElementById("slcOpcaoCorrida");
 const slcOpcaoModalidade = document.getElementById("slcOpcaoModalidade");
 const slcOpcaoModalidadeTrail = document.getElementById("slcOpcaoModalidadeTrail");
 const slcOpcaoDificuldade = document.getElementById("slcOpcaoDificuldade");
-
-
-
 
 if (btInscrever) {
     btInscrever.addEventListener('click', function () {
@@ -33,6 +33,7 @@ if (btInscrever) {
         let idade = Number(inIdade.value);
         let cpf = inCpf.value;
         let nacionalidade = inNacionalidade.value;
+        let modalidade = slcOpcaoCorrida.value;
         
         if (nome == "") {
             outSaida.style.color = "red";
@@ -45,23 +46,28 @@ if (btInscrever) {
         } else if (cpf.length != 11) {
             outSaida.style.color = "red";
             outSaida.textContent = "Deve ser preenchido uma CPF válido";
-            inCpf.focus();
-        } else if (opcao == "Selecione a corrida") {
+            inCpf.focus();   
+        } else if (nacionalidade == "") {
+            outSaida.style.color = "red";
+            outSaida.textContent = "Deve ser preenchido uma nacionalidade válida";
+            inNacionalidade.focus();
+        }else if (modalidade == "Selecione a corrida") {
             outSaida.style.color = "red";
             outSaida.textContent = "Selecione a modadalidade de Competição";
             slcOpcaoCorrida.focus();
-        } else {
+        }else {
             outSaida.style.color = "black";
-            outSaida.innerHTML = AtletaControl.adicionar(nome, dtNascPessoa, idade, cpf, opcao);
+            outSaida.innerHTML = AtletaControl.adicionar(nome, idade, cpf, nacionalidade, modalidade);
             inNome.value = "";
             inIdade.value = "";
             inCpf.value = "";
+            inNacionalidade.value = "";
             slcOpcaoCorrida.value = "";
         }
     })
 }
 
-btnExcluir.addEventListener('click', function () {
+btExcluir.addEventListener('click', function () {
     let nome = (inNome.value).toUpperCase();
 
     if(nome == ""){
@@ -71,10 +77,15 @@ btnExcluir.addEventListener('click', function () {
     } else{
         outSaida.style.color = "black";
         outSaida.innerHTML = AtletaControl.excluir(nome);
+        inNome.value = "";
+        inIdade.value = "";
+        inCpf.value = "";
+        inNacionalidade.value = "";
+        slcOpcaoCorrida.value = "";
     }
 })
 
-btnBuscar.addEventListener('click', function () {
+btBuscar.addEventListener('click', function () {
     let nome = (inNome.value).toUpperCase();
     let opcao = slcOpcaoCorrida.value;
     let idade = Number(inIdade.value);
@@ -90,19 +101,80 @@ btnBuscar.addEventListener('click', function () {
             nome: inNome.textContent,
             idade: Number(inIdade.textContent),
             cpf: inCpf.textContent,
-            opcao: slcOpcaoCorrida.textContent
-        });
-
+            nacionalidade: inNacionalidade.textContent,
+            modalidade: slcOpcaoCorrida.textContent
+        }) 
         if (atletaEncontrado) {
             inNome.value = atletaEncontrado.nome;
             inIdade.value = atletaEncontrado.idade;
             inCpf.value = atletaEncontrado.cpf;
-            slcOpcaoCorrida.value = atletaEncontrado.opcao;
+            inNacionalidade.value = atletaEncontrado.nacionalidade;
+            slcOpcaoCorrida.value = atletaEncontrado.modalidade;
+            btInscrever.style.display = "none"; 
+            btAlterar.style.display = "block"; 
+            btCancelar.style.display = "block";
+            idBuscar.value = atletaEncontrado.id;
         } else {
             outSaida.textContent = "Atleta não existe no sistema!";
         }
-
     }
+})
+
+btAlterar.addEventListener('click', function () {
+        let nome = (inNome.value).toUpperCase();
+        let idade = Number(inIdade.value);
+        let cpf = inCpf.value;
+        let nacionalidade = inNacionalidade.value;
+        let modalidade = slcOpcaoCorrida.value;
+        let id = (idBuscar.value);
+        
+        if (nome == "") {
+            outSaida.style.color = "red";
+            outSaida.textContent = "O campo Nome deve ser preenchido!";
+            inNome.focus();
+        } else if (idade == "" || idade < 18) {
+            outSaida.style.color = "red";
+            outSaida.textContent = "Deve ser preenchido uma idade válida";
+            inIdade.focus();
+        } else if (cpf.length != 11) {
+            outSaida.style.color = "red";
+            outSaida.textContent = "Deve ser preenchido uma CPF válido";
+            inCpf.focus();   
+        } else if (nacionalidade == "") {
+            outSaida.style.color = "red";
+            outSaida.textContent = "Deve ser preenchido uma nacionalidade válida";
+            inNacionalidade.focus();
+        }else if (modalidade == "Selecione a corrida") {
+            outSaida.style.color = "red";
+            outSaida.textContent = "Selecione a modadalidade de Competição";
+            slcOpcaoCorrida.focus();
+        }else {
+            outSaida.style.color = "black";
+            outSaida.innerHTML = AtletaControl.alterar(id,nome, idade, cpf, nacionalidade, modalidade);
+            inNome.value = "";
+            inIdade.value = "";
+            inCpf.value = "";
+            inNacionalidade.value = "";
+            slcOpcaoCorrida.value = "";
+            idBuscar.textContent = ""; 
+        }
+        btInscrever.style.display = "block"; 
+        btAlterar.style.display = "none"; 
+        btCancelar.style.display = "none";
+})
+
+btCancelar.addEventListener("click", function () {
+    inNome.value = "";
+    inIdade.value = "";
+    inCpf.value = "";
+    inNacionalidade.value = "";
+    slcOpcaoCorrida.value = "";
+    idBuscar.textContent = ""; 
+    
+    
+    btInscrever.style.display = "block"; 
+    btAlterar.style.display = "none"; 
+    btCancelar.style.display = "none";
 })
 
 

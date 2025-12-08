@@ -24,15 +24,17 @@
 
                 <h2>Cadastro de Atleta</h2>
                 <label>Nome do Atleta</label>
+                <p id="idBuscar" type="number" display="none"></p>
                 <input id="inNome" type="text" placeholder="Nome completo">
-                <button id="btnBuscar" class="btnBuscar">Buscar</button>
-                <button id="btnExcluir" class="btnExcluir">Exluir</button>
+                <button id="btBuscar" class="btnBuscar">Buscar</button>
+                <button id="btExcluir" class="btnExcluir">Exluir</button>
+                <button id="btCancelar" class="btnCancelar" style="display: none">Cancelar</button>
                 <label>Idade</label>
                 <input id="inIdade" type="number" placeholder="Idade">
                 <label>CPF</label>
                 <input id="inCpf" type="number" placeholder="CPF">
                 <label>Nacionalidade</label>
-                <input id="inNacionalidade" type="text" placeholder="CPF">
+                <input id="inNacionalidade" type="text" placeholder="Nacionalidade">
 
                 <label>Escolha a Modalidade de Competição</label>
                 <select name="opcao" id="slcOpcaoCorrida">
@@ -41,6 +43,7 @@
                     <option value="OpcMaratona">Maratona</option>
                 </select>
                 <input class="button" type="button" id="btInscrever" value="Inscrever Atleta">
+                <input class="button" type="button" id="btAlterar" value="Alterar Atleta" style="display: none">
                 <p id="outSaida"></p>
                 quando clica em bucar ele muda o botao para atualizar
             </div>
