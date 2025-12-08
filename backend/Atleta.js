@@ -7,6 +7,7 @@ export class Atleta {
     #nacionalidade;
     #modalidade;
 
+
     constructor (nome, idade, cpf, nacionalidade, modalidade) {
         this.#nome = nome;
         this.#idade = idade;
@@ -19,8 +20,8 @@ export class Atleta {
     }
 
 
-    static get id(){
-        return this.id;
+    get id(){
+        return this.#id;
     }
 
 
@@ -39,25 +40,42 @@ export class Atleta {
         return this.#idade;
     }
 
+    set idade(idade){
+        if(idade >= 18){
+        this.#idade = idade;
+        }
+    }
+
 
     get cpf(){
         return this.#cpf;
     }
+
+    set cpf(cpf){
+        this.#cpf = cpf;
+    }
+
+    get nacionalidade(){
+        return this.#nacionalidade;
+    }
+
+    set nacionalidade(nacionalidade){
+        this.#nacionalidade = nacionalidade;
+    }
     
-    get opcao(){
+    get modalidade(){
         return this.#modalidade;
+    }
+
+    set modalidade(modalidade){
+        this.#modalidade = modalidade;
     }
 
     toString() {
         return ("\nNome: " + this.#nome +
-        "\nCPF: " + this.#cpf +
         "\nIdade: " + this.#idade +
+        "\nCPF: " + this.#cpf +
+        "\nNacionalidade: " + this.#nacionalidade +
         "\nOpção Corrida: " + this.#modalidade);
     } 
-
-    relatorio() {
-        return ("\nNome: " + this.#nome +
-            "\nNome das corridas: " + this.nomeCorridasPassadas);
-    }
-
 }

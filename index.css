@@ -295,6 +295,14 @@ main {
     cursor: pointer;
 }
 
+.btnCancelar {
+    padding: 8px 16px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
 /* lista competidor*/
 
@@ -325,7 +333,7 @@ main {
     font-weight: bold;
 }
 
-.btnEditar, .btnExcluir {
+.btnEditar, .btnExcluir, .btnCancelar {
     padding: 6px 10px;
     border: none;
     cursor: pointer;
@@ -338,6 +346,11 @@ main {
 }
 
 .btnExcluir {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.btnCancelar {
     background-color: #e74c3c;
     color: white;
 }
