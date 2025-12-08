@@ -30,28 +30,12 @@ export function excluirAtleta(nome){
     return false;
 }
 
-export function alterarAtleta(nome, novosDados) {
-    let atleta = pesquisarAtleta(nome);
-
-    if (!atleta) return false;
-
-    atleta.nome = novosDados.nome;
-    atleta.dtNascPessoa = novosDados.dtNascPessoa;
-    atleta.idade = novosDados.idade;
-    atleta.cpf = novosDados.cpf;
-    atleta.opcao = novosDados.opcao;
-
-    return true;
-}
-
-
-
-/*
-export function alterarAtleta(nome, dadosAtleta){
+export function alterarAtleta(nome){
     let atletaEncontrado = pesquisarAtleta(nome);
 
     if(atletaEncontrado != null){
-        return dadosAtleta = atletaEncontrado;
+        
+        return atletaEncontrado;
        //atletaEncontrado.dtNascPessoa = novosDados.dtNascPessoa;
       //  atletaEncontrado.idade = novosDados.idade;
         //atletaEncontrado.cpf = novosDados.cpf;
@@ -59,7 +43,7 @@ export function alterarAtleta(nome, dadosAtleta){
     }
     return false;
 }
-*/
+
 
 
 

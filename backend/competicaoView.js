@@ -58,6 +58,11 @@ if (btInscrever) {
         } else {
             outSaida.style.color = "black";
             outSaida.innerHTML = AtletaControl.adicionar(nome, dtNascPessoa, idade, cpf, opcao);
+            inNome.value = "";
+            dtDataNasc.value = "";
+            inIdade.value = "";
+            inCpf.value = "";
+            slcOpcaoCorrida.value = "";
         }
     })
 }
@@ -90,15 +95,20 @@ btnBuscar.addEventListener('click', function () {
     } else {
 
         let resposta = AtletaControl.modificar(nome, {
-            nome: inNome.value,
-            dtNascPessoa: dtDataNasc.value,
-            idade: Number(inIdade.value),
-            cpf: inCpf.value,
-            opcao: slcOpcaoCorrida.value
+            nome: inNome.textContent,
+            dtNascPessoa: dtDataNasc.textContent,
+            idade: Number(inIdade.textContent),
+            cpf: inCpf.textContent,
+            opcao: slcOpcaoCorrida.textContent
         });
 
         if (resposta.erro) {
             outSaida.textContent = resposta.erro;
+            inNome.textContent = nome;
+            dtDataNasc.textContent = dtNascPessoa;
+            inIdade.textContent = idade;
+            inCpf.textContent = cpf;
+
         } else {
             outSaida.textContent = "Atleta atualizado com sucesso!";
         }

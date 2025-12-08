@@ -14,11 +14,11 @@ export function excluir(nome) {
     return "O Atleta não existe para excluir!";
 }
 
-export function modificar(nome, dtNascPessoa, idade, cpf, opcao, dadosAtleta){
-    if(vetAtletas.alterarAtleta(nome, dtNascPessoa, idade, cpf, opcao)){
-        return dadosAtleta
-    }
-    return "Não existe este Atleta Buscado!";
+export function modificar(nome){
+    let dados = vetAtletas.alterarAtleta(nome)
+        return dados;
+
+    //return "Não existe este Atleta Buscado!";
 }
 
 
