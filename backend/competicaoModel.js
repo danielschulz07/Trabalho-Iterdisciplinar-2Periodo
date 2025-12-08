@@ -5,16 +5,22 @@ import { Maratona } from "./Maratona.js";
 import { Competidor } from "./Competidor.js";
 
 
-var teste = new Atleta(1213,3123,123,123);
-var teste2 = new Atleta("zxc","zxcz","zxc","zxc");
+const vetCompeticoes = [];
+
+export function pesquisarCompeticao(nomeCompeticao){
+    let indCompeticao = vetCompeticoes.findIndex(objProd => objProd.nomeCompeticao == nomeCompeticao);
+    return (indCompeticao == -1) ? null : vetCompeticoes[indCompeticao];
+}
 
 
-export var vetPessoa = [teste, teste2];
+export function adicionarCompeticao(nomeCompeticao, distancia, dataCorrida, qtdCompetidores, opcaoModalidade, ganhoElevacao, qtdCheckMaratona, qtdCheckTrail, opcaoModalidadeTrail, opcaoDificuldade){
+    let competicao = pesquisarCompeticao(nomeCompeticao);
 
-var cor = new Competicao(123,123,123,123);
-var cor2 = new Competicao("zxc","zxc","zxc","zxc");
-var mar1 = new Maratona(123,123,123,123,123,123);
-var trail = new TrailRunning("zxc","zxc","zxc","zxc","zxc","zxc","zxc");
-
-export var vetCorrida = [cor,cor2,mar1,trail];
-
+    if(competicao == null){
+        competicao = new Competicao(nomeCompeticao, distancia, dataCorrida, qtdCompetidores, opcaoModalidade, ganhoElevacao, qtdCheckMaratona, qtdCheckTrail, opcaoModalidadeTrail, opcaoDificuldade)
+        vetCompeticoes.push(competicao);
+        console.log(vetCompeticoes);
+        return true;
+    }
+    return false;
+}

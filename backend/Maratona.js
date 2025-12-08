@@ -1,4 +1,4 @@
-import { Corrida } from "./Competicao.js";
+import { Competicao } from "./Competicao.js";
 
 export class Maratona extends Competicao{
     #qtdPontoApoio;

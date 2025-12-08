@@ -1,4 +1,5 @@
 import * as AtletaControl from "./atletaControl.js";
+import * as CompeticaoControl from "./competicaoControl.js";
 
 const inNome = document.getElementById("inNome");
 const inIdade = document.getElementById("inIdade");
@@ -233,7 +234,7 @@ if (btCadastrarCorrida) {
                 outSaida.textContent = "O campo Quantidade de CheckPoint deve ser preenchido com um valor acima de 0!";
                 qtdCheckpointMaratona.focus();
             } else {
-                if (CompeticaoControl.adicionarCompeticao(nomeCompeticao, distancia, dataCorrida, qtdCompetidores, opcaoModalidade, ganhoElevacao, qtdCheckMaratona, qtdCheckTrail, opcaoModalidadeTrail, opcaoDificuldade) == true) {
+                if (CompeticaoControl.adicionar(nomeCompeticao, distancia, dataCorrida, qtdCompetidores, opcaoModalidade, ganhoElevacao, qtdCheckMaratona, qtdCheckTrail, opcaoModalidadeTrail, opcaoDificuldade) == true) {
                     outSaida.style.color = "blue";
                     outSaida.textContent = "O novo produto foi acrescentado com sucesso!";
                 } else {
