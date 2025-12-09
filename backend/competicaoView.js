@@ -332,7 +332,13 @@ btPesquisarAtleta.addEventListener("click", function(){
 btPesquisarCorrida.addEventListener("click", function(){
     let nomeCompeticao = (inNomeCorrida.value).toUpperCase();
     let distancia = Number(inDistancia.value);
-    let dataCorrida = new Date(dtCorrida.value);
+    let dataCorrida = "";
+    if(dtCorrida.value == ""){
+        dataCorrida = "";
+    }else{
+
+         dataCorrida = new Date(dtCorrida.value + "T00:00:00");//Escolher horario?
+    }
     let qtdCompetidores = Number(inQtdCompetidores.value);
     let opcaoModalidade = slcOpcaoModalidade.value;
 
