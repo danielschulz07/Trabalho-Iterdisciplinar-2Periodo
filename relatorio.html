@@ -25,13 +25,21 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Nome</th>
-                        <th>Idade</th>
-                        <th>CPF</th>
-                        <th>Nacionalidade</th>
-                        <th>Modalidade</th>
+                        <th>Nome <input id="inNome" type="text" placeholder="Nome"></th>
+                        <th>Idade <input id="inIdade" type="number" placeholder="Idade"></th>
+                        <th>CPF <input id="inCpf" type="number" placeholder="CPF"></th>
+                        <th>Nacionalidade <input id="inNacionalidade" type="text" placeholder="Nacionalidade"></th>
+                        <th>Modalidade <select name="opcao" id="slcOpcaoCorrida">
+                                <option selected>Qualquer modalidade</option>
+                                <option value="OpcTrail">Trail Running</option>
+                                <option value="OpcMaratona">Maratona</option>
+                                    </select>
+                        </th>
                         <!--<th>Corrida</th>
                         <th>Ações</th>-->
+                        <th>
+                            <input class="button" type="button" id="btPesquisarAtleta" value="Pesquisar Atleta">
+                        </th>
                     </tr>
                 </thead>
 
@@ -39,20 +47,29 @@
                     <!-- Os competidores serão adicionados aqui via JavaScript -->
                 </tbody>
             </table>
-            <br>
+        </div>
+        <div class="lista-corridas">
             <table>
                 <thead>
                     <tr>
-                        <th>Nome</th>
+                        <th>Nome <input id="inNomeCorrida" type="text" placeholder="Ex: Trail Run Serra"></th>
                         <!--<th>Altimetria</th>-->
-                        <th>Distancia</th>
-                        <th>Data</th>
-                        <th>Limite de Competidores</th>
-                        <th>Tipo</th>
+                        <th>Distancia <input id="inDistancia" type="number" placeholder="Ex: 10"></th>
+                        <th>Data <input id="dtCorrida" type="date"></th>
+                        <th>Limite de Competidores <input id="inQtdCompetidores" type="number" placeholder="Digite a quantidade de Competidores"></th>
+                        <th>Tipo <select name="opcao" id="slcOpcaoModalidade">
+                                <option selected>Selecione a modalidade</option>
+                                <option value="Maratona">Maratona</option>
+                                <option value="TrailRunning">Trail Running</option>
+                            </select>
+                        </th>
+                        <th>
+                            <input class="button" type="button" id="btPesquisarCorrida" value="Pesquisar Competição">
+                        </th>
                     </tr>
                 </thead>
                 <tbody id="tabelaCorridas">
-                    
+                
                 </tbody>
             </table>
         </div>

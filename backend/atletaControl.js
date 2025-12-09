@@ -29,3 +29,7 @@ export function criarRelatorio(){
     vetAtletas.criarRelatorio();
     //return tabelaCompetidores;
 }
+
+export function pesquisarAtleta(nome, idade, cpf, nacionalidade, modalidade){
+    vetAtletas.filtrarAtleta(nome, idade, cpf, nacionalidade, modalidade);
+}

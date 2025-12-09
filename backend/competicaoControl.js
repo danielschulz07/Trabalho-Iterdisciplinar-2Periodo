@@ -49,3 +49,7 @@ export function criarRelatorio(){
     Model.criarRelatorio();
     //return tabelaCompetidores;
 }
+
+export function pesquisarCorrida(nomeCompeticao, distancia, dataCorrida, qtdCompetidores, opcaoModalidade){
+    Model.filtrarCorrida(nomeCompeticao, distancia, dataCorrida, qtdCompetidores, opcaoModalidade);
+}

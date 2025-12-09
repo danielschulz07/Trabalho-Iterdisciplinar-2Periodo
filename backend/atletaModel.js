@@ -1,7 +1,8 @@
 import { Atleta } from "./Atleta.js";
 
-const ate = new Atleta("DADA", 20, "12345678910", "br", "OpcTrail")
-const vetAtletas = [ate];
+const ate = new Atleta("DADA", 20, "12345678910", "br", "OpcTrail");
+const bum = new Atleta("bro", 30, "12345678911", "br", "OpcMaratona");
+const vetAtletas = [ate, bum];
 console.log(ate)
 
 
@@ -58,11 +59,11 @@ export function alterarAtleta(id, nome, idade, cpf, nacionalidade, modalidade) {
         }
     }
 
-export function criarRelatorio(){
+export function criarRelatorio(i){
     //let tabela = document.createElement("tr");
     //tabela.innerHTML = "nigga";
     
-    for (let i = 0; i < vetAtletas.length; i++) {
+
         //gerar tabela        TABELA  QUANTIDAD
         let trTabela = document.createElement("tr");
         
@@ -93,5 +94,22 @@ export function criarRelatorio(){
     
    //relatorioTitulosPorGenero.appendChild(thTabelaQuant);
    tabelaCompetidores.appendChild(trTabela);
-};
+
+}
+
+export function filtrarAtleta(nome, idade, cpf, nacionalidade, modalidade){
+    tabelaCompetidores.textContent = "";
+    for (let i = 0; i < vetAtletas.length; i++) {
+        if(
+            (vetAtletas[i].nome.toUpperCase().includes(nome)) &&
+             (vetAtletas[i].idade == idade || idade == 0) &&
+              (vetAtletas[i].cpf.includes(cpf) || cpf == "") &&
+               (vetAtletas[i].nacionalidade == nacionalidade || nacionalidade == "") &&
+                (vetAtletas[i].modalidade == modalidade || modalidade == "Qualquer modalidade")
+        )
+        
+        
+        
+        criarRelatorio(i);
+    }
 }

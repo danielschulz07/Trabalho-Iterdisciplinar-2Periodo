@@ -311,8 +311,33 @@ if(btInscreverAtletaComp){
 const tabelaCompetidores = document.getElementById("tabelaCompetidores");
 const tabelaCorridas = document.getElementById("tabelaCorridas");
 
-window.onload = CompeticaoControl.criarRelatorio();
-window.onload = AtletaControl.criarRelatorio();
+//window.onload = CompeticaoControl.criarRelatorio();
+//window.onload = AtletaControl.criarRelatorio();
+
+
+
+const btPesquisarAtleta = document.getElementById("btPesquisarAtleta");
+const btPesquisarCorrida = document.getElementById("btPesquisarCorrida");
+
+btPesquisarAtleta.addEventListener("click", function(){
+    let nome = (inNome.value).toUpperCase();
+    let idade = Number(inIdade.value);
+    let cpf = inCpf.value;
+    let nacionalidade = inNacionalidade.value;
+    let modalidade = slcOpcaoCorrida.value;
+
+    AtletaControl.pesquisarAtleta(nome, idade, cpf, nacionalidade, modalidade);
+})
+
+btPesquisarCorrida.addEventListener("click", function(){
+    let nomeCompeticao = (inNomeCorrida.value).toUpperCase();
+    let distancia = Number(inDistancia.value);
+    let dataCorrida = new Date(dtCorrida.value);
+    let qtdCompetidores = Number(inQtdCompetidores.value);
+    let opcaoModalidade = slcOpcaoModalidade.value;
+
+    CompeticaoControl.pesquisarCompeticao(nomeCompeticao, distancia, dataCorrida, qtdCompetidores, opcaoModalidade)
+})
 /*
 btInscreverAtletaComp.addEventListener('click', function () {
     let nome = (inNome.value).toUpperCase();

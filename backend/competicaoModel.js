@@ -20,8 +20,7 @@ export var vetCorrida = [cor,cor2];
 
 export var vetCompetidor = [];
 
-export function criarRelatorio(){
-    for (let i = 0; i < vetCorrida.length; i++) {
+export function criarRelatorio(i){
         //gerar tabela        TABELA  QUANTIDAD
         let trTabela = document.createElement("tr");
         
@@ -49,6 +48,22 @@ export function criarRelatorio(){
         
         //relatorioTitulosPorGenero.appendChild(thTabelaQuant);
         tabelaCorridas.appendChild(trTabela);
+}
+
+export function filtrarCorrida(nomeCompeticao, distancia, data, qtdCompetidores, opcaoModalidade){
+    tabelaCorridas.textContent = "";
+    for (let i = 0; i < vetCorrida.length; i++) {
+        if(
+            (vetCorrida[i].nome.toUpperCase().includes(nomeCompeticao)) &&
+             (vetCorrida[i].distancia <= distancia || distancia == 0) &&
+              //(vetCorrida[i].data >= data || data == "") &&
+               (vetCorrida[i].limiteCorredores <= qtdCompetidores || qtdCompetidores == 0) //&&
+                //(vetCorrida[i].modalidade == modalidade || modalidade == "Qualquer modalidade")
+        )
+        
+        
+        
+        criarRelatorio(i);
     }
 }
 //let tdAltimetria = document.createElement("td");
