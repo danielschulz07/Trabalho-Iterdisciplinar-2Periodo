@@ -4,18 +4,39 @@ import { TrailRunning } from "./TrailRunning.js";
 import { Maratona } from "./Maratona.js";
 import { Competidor } from "./Competidor.js";
 
+const vetCompeticoes = [];
 
-var teste = new Atleta(1213,3123,123,123);
-var teste2 = new Atleta("zxc","zxcz","zxc","zxc");
+export function pesquisarCompeticao(nomeCompeticao){
+    let indCompeticao = vetCompeticoes.findIndex(objProd => objProd.nome == nomeCompeticao);
+    return (indCompeticao == -1) ? null : vetCompeticoes[indCompeticao];
+}
 
+export function adicionarCompeticao(nomeCompeticao, distancia, dataCorrida, qtdCompetidores, altimetria, opcaoModalidade, ganhoElevacao, qtdCheckMaratona, qtdCheckTrail, opcaoModalidadeTrail, opcaoDificuldade){
+    let competicao = pesquisarCompeticao(nomeCompeticao);
 
-export var vetPessoa = [teste, teste2];
+    if(competicao == null){
+        // fazer uma verificação, quando for maratona ele da new Maratona e quando for trailrunning ele da um new TrailRunnig
+        competicao = new Maratona(nomeCompeticao, distancia, dataCorrida, qtdCompetidores, altimetria, opcaoModalidade, ganhoElevacao, qtdCheckMaratona, qtdCheckTrail, opcaoModalidadeTrail, opcaoDificuldade)
+        vetCompeticoes.push(competicao);
+        console.log(vetCompeticoes);
+        return true;
+    }
+    return false;
+}
 
-var cor = new Competicao(123,123,123,123);
-var cor2 = new Competicao("zxc","zxc","zxc","zxc");
-var mar1 = new Maratona(123,123,123,123,123,123);
-var trail = new TrailRunning("zxc","zxc","zxc","zxc","zxc","zxc","zxc");
+export function vincularCompetidor(idAtleta, idCompeticao, identificador){
+    let competidor = new Competidor(idAtleta, idCompeticao, identificador);
+    Model.vetCompetidor.push(competidor);
+    //return console.log(Model.vetCompetidor[0]);
+}
 
-export var vetCorrida = [cor,cor2,mar1,trail];
+export function checarVetCompetidor(idAtleta, idCompeticao){
+        let indCompetidor = Model.vetCompetidor.findIndex(objProd => objProd.idAtleta == idAtleta && objProd.idCompeticao == idCompeticao);
+    return (indCompetidor == -1) ? null : true;
+}
 
-export var vetCompetidor = [];
+export function colocacaoCompetidor(idAtleta, idCompeticao, colocacao){
+    let indCompetidor = Model.vetCompetidor.findIndex(objProd => objProd.idAtleta == idAtleta && objProd.idCompeticao == idCompeticao);
+    Model.vetCompetidor[indCompetidor].colocacao = colocacao;
+    console.log(Model.vetCompetidor[indCompetidor]);
+}

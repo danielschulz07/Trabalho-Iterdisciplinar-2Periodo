@@ -17,6 +17,7 @@ const inNomeCorrida = document.getElementById("inNomeCorrida");
 const inDistancia = document.getElementById("inDistancia");
 const dtCorrida = document.getElementById("dtCorrida");
 const inQtdCompetidores = document.getElementById("inQtdCompetidores");
+const inAltimetria = document.getElementById("inAltimetria");
 const inGanhoElevacao = document.getElementById("inGanhoElevacao");
 const qtdCheckpointMaratona = document.getElementById("qtdCheckpointMaratona");
 const qtdCheckpointTrail = document.getElementById("qtdCheckpointTrail");
@@ -191,11 +192,12 @@ btCancelar.addEventListener("click", function () {
 
 if (btCadastrarCorrida) {
     btCadastrarCorrida.addEventListener('click', function () {
-        
+
         let nomeCompeticao = (inNomeCorrida.value).toUpperCase();
         let distancia = Number(inDistancia.value);
         let dataCorrida = new Date(dtCorrida.value);
         let qtdCompetidores = Number(inQtdCompetidores.value);
+        let altimetria = Number(inAltimetria.value);
         let ganhoElevacao = Number(inGanhoElevacao.value);
         let qtdCheckMaratona = Number(qtdCheckpointMaratona.value);
         let qtdCheckTrail = Number(qtdCheckpointTrail.value);
@@ -219,6 +221,10 @@ if (btCadastrarCorrida) {
             outSaida.style.color = "red";
             outSaida.textContent = "O campo Quantidade de Competidores deve ser preenchido com um valor acima de 0!";
             inQtdCompetidores.focus();
+        }else if (altimetria <= 0) {
+            outSaida.style.color = "red";
+            outSaida.textContent = "Altimetria deve ter um valor acima de 0!";
+            inAltimetria.focus();
         } else if (opcaoModalidade == "Selecione a modalidade") {
             outSaida.style.color = "red";
             outSaida.textContent = "Selecione uma modalidade!";
@@ -239,14 +245,8 @@ if (btCadastrarCorrida) {
                 outSaida.textContent = "O campo Quantidade de CheckPoint deve ser preenchido com um valor acima de 0!";
                 qtdCheckpointMaratona.focus();
             } else {
-                if (CompeticaoControl.adicionarCompeticao(nomeCompeticao, distancia, dataCorrida, qtdCompetidores, opcaoModalidade, ganhoElevacao, qtdCheckMaratona, qtdCheckTrail, opcaoModalidadeTrail, opcaoDificuldade) == true) {
-                    outSaida.style.color = "blue";
-                    outSaida.textContent = "O novo produto foi acrescentado com sucesso!";
-                } else {
-                    outSaida.style.color = "red";
-                    outSaida.textContent = "Erro! O Competidor " + nome + " já estava cadastrado!";
-                    inNome.focus();
-                }
+                outSaida.style.color = "black";
+                outSaida.innerHTML = CompeticaoControl.adicionar(nomeCompeticao, distancia, dataCorrida, qtdCompetidores, altimetria, opcaoModalidade, ganhoElevacao, qtdCheckMaratona, qtdCheckTrail, opcaoModalidadeTrail, opcaoDificuldade);
             }
         } else if (opcaoModalidade == "TrailRunning") {
             inGanhoElevacao.disabled = true;
@@ -270,14 +270,8 @@ if (btCadastrarCorrida) {
                 outSaida.textContent = "O campo de Dificuldade deve ser preenchido com um valor válido!";
                 slcOpcaoDificuldade.focus();
             } else {
-                if (CompeticaoControl.adicionarCompeticao(nomeCompeticao, distancia, dataCorrida, qtdCompetidores, opcaoModalidade, ganhoElevacao, qtdCheckMaratona, qtdCheckTrail, opcaoModalidadeTrail, opcaoDificuldade) == true) {
-                    outSaida.style.color = "blue";
-                    outSaida.textContent = "O novo produto foi acrescentado com sucesso!";
-                } else {
-                    outSaida.style.color = "red";
-                    outSaida.textContent = "Erro! O Competidor " + nome + " já estava cadastrado!";
-                    inNome.focus();
-                }
+                outSaida.style.color = "black";
+                outSaida.innerHTML = CompeticaoControl.adicionar(nomeCompeticao, distancia, dataCorrida, qtdCompetidores, altimetria, opcaoModalidade, ganhoElevacao, qtdCheckMaratona, qtdCheckTrail, opcaoModalidadeTrail, opcaoDificuldade);
             }
         }
     });

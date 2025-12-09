@@ -6,14 +6,16 @@ export class Competicao {
     #distancia;
     #data;
     #limiteCorredores;
+    #modalidade;
     #listaCorredores = [];//relatorio precisa do num de valores aq, faz calculo com .lenght
 
 
-    constructor(nome, distancia, data, limiteCorredores, altimetria){
+    constructor(nome, distancia, data, limiteCorredores, modalidade, altimetria){
         this.#nome = nome;
         this.#distancia = distancia;
         this.#data = data;
         this.#limiteCorredores = limiteCorredores;
+        this.#modalidade = modalidade;
         this.#altimetria = altimetria;
         this.#id = Competicao.#idStatic;
         Competicao.#idStatic++;
@@ -25,6 +27,22 @@ export class Competicao {
 
     get nome(){
         return this.#nome;
+    }
+
+    get distancia(){
+        return this.#distancia;
+    }
+
+    get data(){
+        return this.#data;
+    }
+
+    get limiteCorredores(){
+        return this.#limiteCorredores;
+    }
+
+    get modalidade(){
+        return this.#modalidade;
     }
 
     historico(atleta){
