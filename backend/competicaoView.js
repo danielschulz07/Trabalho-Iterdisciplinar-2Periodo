@@ -312,7 +312,7 @@ const tabelaCompetidores = document.getElementById("tabelaCompetidores");
 const tabelaCorridas = document.getElementById("tabelaCorridas");
 
 //window.onload = CompeticaoControl.criarRelatorio();
-//window.onload = AtletaControl.criarRelatorio();
+//window.onload = AtletaControl.criarRelatorio(); TRANSFORMAR EM FUNÇOES QUE PEGAM OS VALORES VAZIOS E FAZEM AS PROXIMAS FUNCOES
 
 
 
