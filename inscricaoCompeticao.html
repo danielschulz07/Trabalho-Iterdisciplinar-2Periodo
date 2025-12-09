@@ -30,10 +30,12 @@
                 <input id="dtCorrida" type="date">
                 <label>Quantidade de Atletas </label>
                 <input id="inQtdCompetidores" type="number" placeholder="Digite a quantidade de Competidores">
+                <label>Local da Corrida</label>
+                <input id="inLocal" type="text" placeholder="Escolha o local da corrida">
 
                 <label>Modalidade</label>
                 <select name="opcao" id="slcOpcaoModalidade">
-                    <option selected disabled>Selecione a modalidade</option>
+                    <option selected disabled value="Qualquer modalidade">Selecione a modalidade</option>
                     <option value="Maratona">Maratona</option>
                     <option value="TrailRunning">Trail Running</option>
                 </select>
@@ -80,7 +82,7 @@
         <div class="lista-competidores">
             <h2>Lista de Competidores</h2>
 
-            <table id="tabelaCompetidores">
+            <table>
                 <thead>
                     <tr>
                         <th>Nome</th>
@@ -92,7 +94,7 @@
                     </tr>
                 </thead>
 
-                <tbody>
+                <tbody id="tabelaCorridas">
                     <!-- Os competidores serão adicionados aqui via JavaScript -->
                 </tbody>
             </table>

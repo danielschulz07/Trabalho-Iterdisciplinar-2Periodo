@@ -130,7 +130,11 @@ btBuscar.addEventListener('click', function () {
             outSaida.textContent = "Atleta não existe no sistema!";
         }
     }
-    AtletaControl.pesquisarAtleta("", 0, "", "", "Qualquer modalidade");
+    let idade = 0;
+    let cpf = "";
+    let nacionalidade = "";
+    let modalidade = "Qualquer modalidade";
+    AtletaControl.pesquisarAtleta(nome, idade, cpf, nacionalidade, modalidade);
 })
 }
 
@@ -287,6 +291,14 @@ if (btCadastrarCorrida) {
                 }
             }
         }
+        //PROVISORIADE
+        nomeCompeticao = "";
+        distancia = 0;
+        dataCorrida = "";
+        qtdCompetidores = 0;
+        opcaoModalidade = "Qualquer modalidade";
+        let local = "";
+        CompeticaoControl.pesquisarCorrida(nomeCompeticao, distancia, dataCorrida, qtdCompetidores, opcaoModalidade, local);
     });
 }
 
@@ -337,12 +349,18 @@ window.onload = function(){
         let nomeCompeticao = (inNomeCorrida.value).toUpperCase();
         let distancia = Number(inDistancia.value);
         let dataCorrida = "";
+        if(dtCorrida.value == ""){
+            dataCorrida = "";
+        }else{
+    
+            dataCorrida = new Date(dtCorrida.value + "T00:00:00");//Escolher horario?
+        }
         let qtdCompetidores = Number(inQtdCompetidores.value);
         let opcaoModalidade = slcOpcaoModalidade.value;
         let local = inLocal.value;
-    
+
         CompeticaoControl.pesquisarCorrida(nomeCompeticao, distancia, dataCorrida, qtdCompetidores, opcaoModalidade, local);
-    
+        
     }
 }
 
