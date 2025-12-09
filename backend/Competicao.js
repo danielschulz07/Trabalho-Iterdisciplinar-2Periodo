@@ -6,13 +6,15 @@ export class Competicao {
     #distancia;
     #data;
     #limiteCorredores;
+    #local
 
 
-    constructor(nome, distancia, data, limiteCorredores){
+    constructor(nome, distancia, data, limiteCorredores, local){
         this.#nome = nome;
         this.#distancia = distancia;
         this.#data = data;
         this.#limiteCorredores = limiteCorredores;
+        this.#local = local;
         //this.#altimetria = altimetria;
         this.#id = Competicao.#idStatic;
         Competicao.#idStatic++;
@@ -40,6 +42,10 @@ export class Competicao {
 
     get limiteCorredores(){
         return this.#limiteCorredores;
+    }
+
+    get local(){
+        return this.#local;
     }
 
     historico(atleta){

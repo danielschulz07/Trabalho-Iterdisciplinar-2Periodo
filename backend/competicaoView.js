@@ -70,6 +70,7 @@ if (btInscrever) {
             inNacionalidade.value = "";
             slcOpcaoCorrida.value = "Selecione a Modalidade da Competição";
         }
+
     })
 }
 
@@ -328,6 +329,7 @@ window.onload = function(){
 
     CompeticaoControl.pesquisarCorrida(nomeCompeticao, distancia, dataCorrida, qtdCompetidores, opcaoModalidade);
 }
+
 
 
 
