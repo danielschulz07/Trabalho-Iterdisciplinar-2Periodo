@@ -31,6 +31,7 @@ const slcOpcaoDificuldade = document.getElementById("slcOpcaoDificuldade");
 const inIdentificador = document.getElementById("inIdentificador");
 const labelColocacao = document.getElementById("labelColocacao");
 const inColocacao = document.getElementById("inColocacao");
+const inLocal = document.getElementById("inLocal");
 
 if (btInscrever) {
     btInscrever.addEventListener('click', function () {
@@ -326,8 +327,9 @@ window.onload = function(){
     let dataCorrida = "";
     let qtdCompetidores = Number(inQtdCompetidores.value);
     let opcaoModalidade = slcOpcaoModalidade.value;
+    let local = inLocal.value;
 
-    CompeticaoControl.pesquisarCorrida(nomeCompeticao, distancia, dataCorrida, qtdCompetidores, opcaoModalidade);
+    CompeticaoControl.pesquisarCorrida(nomeCompeticao, distancia, dataCorrida, qtdCompetidores, opcaoModalidade, local);
 }
 
 
@@ -358,8 +360,9 @@ btPesquisarCorrida.addEventListener("click", function(){
     }
     let qtdCompetidores = Number(inQtdCompetidores.value);
     let opcaoModalidade = slcOpcaoModalidade.value;
+    let local = inLocal.value;
 
-    CompeticaoControl.pesquisarCorrida(nomeCompeticao, distancia, dataCorrida, qtdCompetidores, opcaoModalidade);
+    CompeticaoControl.pesquisarCorrida(nomeCompeticao, distancia, dataCorrida, qtdCompetidores, opcaoModalidade, local);
 })
 /*
 btInscreverAtletaComp.addEventListener('click', function () {

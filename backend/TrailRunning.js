@@ -5,8 +5,8 @@ export class TrailRunning extends Competicao{
     #modalidade;
     #nivelDificuldade;
     #tipoTerreno;
-    constructor(nome, distancia, data,limiteCorredores,qtdCheckpoints, modalidade, nivelDificuldade, tipoTerreno){
-        super(nome, distancia, data, limiteCorredores);
+    constructor(nome, distancia, data,limiteCorredores, local, qtdCheckpoints, modalidade, nivelDificuldade, tipoTerreno){
+        super(nome, distancia, data, limiteCorredores, local);
 
         this.#qtdCheckpoints = qtdCheckpoints;
         this.#modalidade = modalidade;
