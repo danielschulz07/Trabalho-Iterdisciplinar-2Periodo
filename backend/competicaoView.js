@@ -71,6 +71,7 @@ if (btInscrever) {
             inNacionalidade.value = "";
             slcOpcaoCorrida.value = "Selecione a Modalidade da Competição";
         }
+        AtletaControl.pesquisarAtleta("", 0, "", "", "Qualquer modalidade");
 
     })
 }
@@ -93,6 +94,7 @@ if(btExcluir){
         slcOpcaoCorrida.value = "Selecione a Modalidade da Competição";
         btCancelar.style.display = "none";
     }
+    AtletaControl.pesquisarAtleta("", 0, "", "", "Qualquer modalidade");
 })
 }
 
@@ -128,12 +130,13 @@ btBuscar.addEventListener('click', function () {
             outSaida.textContent = "Atleta não existe no sistema!";
         }
     }
+    AtletaControl.pesquisarAtleta("", 0, "", "", "Qualquer modalidade");
 })
 }
 
 if(btAlterar){
 btAlterar.addEventListener('click', function () {
-        let nome = (inNome.value).toUpperCase();
+        let nome = inNome.value;
         let idade = Number(inIdade.value);
         let cpf = inCpf.value;
         let nacionalidade = inNacionalidade.value;
@@ -173,6 +176,7 @@ btAlterar.addEventListener('click', function () {
         btInscrever.style.display = "block"; 
         btAlterar.style.display = "none"; 
         btCancelar.style.display = "none";
+        AtletaControl.pesquisarAtleta("", 0, "", "", "Qualquer modalidade");
 })
 }
 
@@ -188,6 +192,7 @@ btCancelar.addEventListener("click", function () {
     btInscrever.style.display = "block"; 
     btAlterar.style.display = "none"; 
     btCancelar.style.display = "none";
+    AtletaControl.pesquisarAtleta(nome, idade, cpf, nacionalidade, modalidade);
 })
 }
 
@@ -306,6 +311,7 @@ if(btInscreverAtletaComp){
 
         }
         
+        
 
 
     })
@@ -313,57 +319,70 @@ if(btInscreverAtletaComp){
 //const tabelaCompetidores = document.getElementById("tabelaCompetidores");
 //const tabelaCorridas = document.getElementById("tabelaCorridas");
 
+
+
 window.onload = function(){
-    let nome = (inNome.value).toUpperCase();
-    let idade = Number(inIdade.value);
-    let cpf = inCpf.value;
-    let nacionalidade = inNacionalidade.value;
-    let modalidade = slcOpcaoCorrida.value;
-
-    AtletaControl.pesquisarAtleta(nome, idade, cpf, nacionalidade, modalidade);
-
-    let nomeCompeticao = (inNomeCorrida.value).toUpperCase();
-    let distancia = Number(inDistancia.value);
-    let dataCorrida = "";
-    let qtdCompetidores = Number(inQtdCompetidores.value);
-    let opcaoModalidade = slcOpcaoModalidade.value;
-    let local = inLocal.value;
-
-    CompeticaoControl.pesquisarCorrida(nomeCompeticao, distancia, dataCorrida, qtdCompetidores, opcaoModalidade, local);
+        if(inNome){
+        let nome = (inNome.value).toUpperCase();
+        let idade = Number(inIdade.value);
+        let cpf = inCpf.value;
+        let nacionalidade = inNacionalidade.value;
+        let modalidade = slcOpcaoCorrida.value;
+    
+        AtletaControl.pesquisarAtleta(nome, idade, cpf, nacionalidade, modalidade);
+    
+    
+    }
+        if(inNomeCorrida){
+        let nomeCompeticao = (inNomeCorrida.value).toUpperCase();
+        let distancia = Number(inDistancia.value);
+        let dataCorrida = "";
+        let qtdCompetidores = Number(inQtdCompetidores.value);
+        let opcaoModalidade = slcOpcaoModalidade.value;
+        let local = inLocal.value;
+    
+        CompeticaoControl.pesquisarCorrida(nomeCompeticao, distancia, dataCorrida, qtdCompetidores, opcaoModalidade, local);
+    
+    }
 }
-
 
 
 
 const btPesquisarAtleta = document.getElementById("btPesquisarAtleta");
 const btPesquisarCorrida = document.getElementById("btPesquisarCorrida");
 
-btPesquisarAtleta.addEventListener("click", function(){
-    let nome = (inNome.value).toUpperCase();
-    let idade = Number(inIdade.value);
-    let cpf = inCpf.value;
-    let nacionalidade = inNacionalidade.value;
-    let modalidade = slcOpcaoCorrida.value;
+if(btPesquisarAtleta){
 
-    AtletaControl.pesquisarAtleta(nome, idade, cpf, nacionalidade, modalidade);
-})
+    btPesquisarAtleta.addEventListener("click", function(){
+        let nome = (inNome.value).toUpperCase();
+        let idade = Number(inIdade.value);
+        let cpf = inCpf.value;
+        let nacionalidade = inNacionalidade.value;
+        let modalidade = slcOpcaoCorrida.value;
+    
+        AtletaControl.pesquisarAtleta(nome, idade, cpf, nacionalidade, modalidade);
+    })
+}
 
-btPesquisarCorrida.addEventListener("click", function(){
-    let nomeCompeticao = (inNomeCorrida.value).toUpperCase();
-    let distancia = Number(inDistancia.value);
-    let dataCorrida = "";
-    if(dtCorrida.value == ""){
-        dataCorrida = "";
-    }else{
+if(btPesquisarCorrida){
 
-         dataCorrida = new Date(dtCorrida.value + "T00:00:00");//Escolher horario?
-    }
-    let qtdCompetidores = Number(inQtdCompetidores.value);
-    let opcaoModalidade = slcOpcaoModalidade.value;
-    let local = inLocal.value;
-
-    CompeticaoControl.pesquisarCorrida(nomeCompeticao, distancia, dataCorrida, qtdCompetidores, opcaoModalidade, local);
-})
+    btPesquisarCorrida.addEventListener("click", function(){
+        let nomeCompeticao = (inNomeCorrida.value).toUpperCase();
+        let distancia = Number(inDistancia.value);
+        let dataCorrida = "";
+        if(dtCorrida.value == ""){
+            dataCorrida = "";
+        }else{
+    
+             dataCorrida = new Date(dtCorrida.value + "T00:00:00");//Escolher horario?
+        }
+        let qtdCompetidores = Number(inQtdCompetidores.value);
+        let opcaoModalidade = slcOpcaoModalidade.value;
+        let local = inLocal.value;
+    
+        CompeticaoControl.pesquisarCorrida(nomeCompeticao, distancia, dataCorrida, qtdCompetidores, opcaoModalidade, local);
+    })
+}
 /*
 btInscreverAtletaComp.addEventListener('click', function () {
     let nome = (inNome.value).toUpperCase();

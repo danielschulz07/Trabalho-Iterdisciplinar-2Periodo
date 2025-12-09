@@ -1,13 +1,13 @@
 import { Atleta } from "./Atleta.js";
 
-const ate = new Atleta("DADA", 20, "12345678910", "br", "OpcTrail");
-const bum = new Atleta("bro", 30, "12345678911", "br", "OpcMaratona");
+const ate = new Atleta("DADA", 20, "12345678910", "br", "TrailRunning");
+const bum = new Atleta("bro", 30, "12345678911", "br", "Maratona");
 const vetAtletas = [ate, bum];
 console.log(ate)
 
 
 export function pesquisarAtleta(nome){
-    let indAtleta = vetAtletas.findIndex(objProd => objProd.nome == nome);
+    let indAtleta = vetAtletas.findIndex(objProd => objProd.nome.toUpperCase() == nome);
     return (indAtleta == -1) ? null : vetAtletas[indAtleta];
 }
 
@@ -102,10 +102,10 @@ export function filtrarAtleta(nome, idade, cpf, nacionalidade, modalidade){
     for (let i = 0; i < vetAtletas.length; i++) {
         if(
             (vetAtletas[i].nome.toUpperCase().includes(nome)) &&
-             (vetAtletas[i].idade == idade || idade == 0) &&
-              (vetAtletas[i].cpf.includes(cpf) || cpf == "") &&
-               (vetAtletas[i].nacionalidade == nacionalidade || nacionalidade == "") &&
-                (vetAtletas[i].modalidade == modalidade || modalidade == "Qualquer modalidade")
+            (vetAtletas[i].idade == idade || idade == 0) &&
+            (vetAtletas[i].cpf.includes(cpf) || cpf == "") &&
+            (vetAtletas[i].nacionalidade == nacionalidade || nacionalidade == "") &&
+            (vetAtletas[i].modalidade == modalidade || modalidade == "Qualquer modalidade")
         )
         
         
