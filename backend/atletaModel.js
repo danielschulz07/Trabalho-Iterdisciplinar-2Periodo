@@ -57,3 +57,41 @@ export function alterarAtleta(id, nome, idade, cpf, nacionalidade, modalidade) {
         vetAtletas[id].modalidade = modalidade;
         }
     }
+
+export function criarRelatorio(){
+    //let tabela = document.createElement("tr");
+    //tabela.innerHTML = "nigga";
+    
+    for (let i = 0; i < vetAtletas.length; i++) {
+        //gerar tabela        TABELA  QUANTIDAD
+        let trTabela = document.createElement("tr");
+        
+        //gerar células
+        let tdNome = document.createElement("td");
+        tdNome.textContent = vetAtletas[i].nome;//valor células
+        
+        let tdIdade = document.createElement("td");
+        tdIdade.textContent = vetAtletas[i].idade;
+        
+        let tdCPF = document.createElement("td");
+        tdCPF.textContent = vetAtletas[i].cpf;
+
+        let tdNacionalidade = document.createElement("td");
+        tdNacionalidade.textContent = vetAtletas[i].nacionalidade;
+
+        let tdModalidade = document.createElement("td");
+        tdModalidade.textContent = vetAtletas[i].modalidade;
+        
+        //adicionar celulas a tabela
+        trTabela.appendChild(tdNome);
+        trTabela.appendChild(tdIdade);
+        trTabela.appendChild(tdCPF);
+        trTabela.appendChild(tdNacionalidade);
+        trTabela.appendChild(tdModalidade);
+
+    //trTabela.appendChild(tabelaCompetidores);
+    
+   //relatorioTitulosPorGenero.appendChild(thTabelaQuant);
+   tabelaCompetidores.appendChild(trTabela);
+};
+}

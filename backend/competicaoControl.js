@@ -44,3 +44,8 @@ export function colocacaoCompetidor(idAtleta, idCompeticao, colocacao){
     Model.vetCompetidor[indCompetidor].colocacao = colocacao;
     console.log(Model.vetCompetidor[indCompetidor]);
 }
+
+export function criarRelatorio(){
+    Model.criarRelatorio();
+    //return tabelaCompetidores;
+}

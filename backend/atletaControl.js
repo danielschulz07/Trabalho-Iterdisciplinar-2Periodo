@@ -24,3 +24,8 @@ export function alterar(id, nome, idade, cpf, nacionalidade, modalidade){
     return atletaEncontrado;
 
 }
+
+export function criarRelatorio(){
+    vetAtletas.criarRelatorio();
+    //return tabelaCompetidores;
+}

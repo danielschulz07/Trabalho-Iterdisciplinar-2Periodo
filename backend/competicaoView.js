@@ -308,6 +308,11 @@ if(btInscreverAtletaComp){
 
     })
 }
+const tabelaCompetidores = document.getElementById("tabelaCompetidores");
+const tabelaCorridas = document.getElementById("tabelaCorridas");
+
+window.onload = CompeticaoControl.criarRelatorio();
+window.onload = AtletaControl.criarRelatorio();
 /*
 btInscreverAtletaComp.addEventListener('click', function () {
     let nome = (inNome.value).toUpperCase();
