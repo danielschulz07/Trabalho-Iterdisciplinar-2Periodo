@@ -52,4 +52,5 @@ export function criarRelatorio(){
 
 export function pesquisarCorrida(nomeCompeticao, distancia, dataCorrida, qtdCompetidores, opcaoModalidade){
     Model.filtrarCorrida(nomeCompeticao, distancia, dataCorrida, qtdCompetidores, opcaoModalidade);
+    alert("nigger");
 }

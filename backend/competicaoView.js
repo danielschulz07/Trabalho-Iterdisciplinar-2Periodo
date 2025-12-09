@@ -336,7 +336,7 @@ btPesquisarCorrida.addEventListener("click", function(){
     let qtdCompetidores = Number(inQtdCompetidores.value);
     let opcaoModalidade = slcOpcaoModalidade.value;
 
-    CompeticaoControl.pesquisarCompeticao(nomeCompeticao, distancia, dataCorrida, qtdCompetidores, opcaoModalidade)
+    CompeticaoControl.pesquisarCorrida(nomeCompeticao, distancia, dataCorrida, qtdCompetidores, opcaoModalidade);
 })
 /*
 btInscreverAtletaComp.addEventListener('click', function () {
