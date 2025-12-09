@@ -1,22 +1,20 @@
 export class Competicao {
     static #idStatic = 0;
     #id;
-    #nome;
-    #altimetria;
+    #nomeCompeticao;
     #distancia;
-    #data;
-    #limiteCorredores;
+    #dataCompeticao;
+    #qtdCompetidores;
     #modalidade;
     #listaCorredores = [];//relatorio precisa do num de valores aq, faz calculo com .lenght
 
 
-    constructor(nome, distancia, data, limiteCorredores, modalidade, altimetria){
-        this.#nome = nome;
+    constructor(nomeCompeticao, distancia, dataCompeticao, qtdCompetidores, modalidade){
+        this.#nomeCompeticao = nomeCompeticao;
         this.#distancia = distancia;
-        this.#data = data;
-        this.#limiteCorredores = limiteCorredores;
+        this.#dataCompeticao = dataCompeticao;
+        this.#qtdCompetidores = qtdCompetidores;
         this.#modalidade = modalidade;
-        this.#altimetria = altimetria;
         this.#id = Competicao.#idStatic;
         Competicao.#idStatic++;
     }
@@ -25,20 +23,20 @@ export class Competicao {
         return this.#id;
     }
 
-    get nome(){
-        return this.#nome;
+    get nomeCompeticao(){
+        return this.#nomeCompeticao;
     }
 
     get distancia(){
         return this.#distancia;
     }
 
-    get data(){
-        return this.#data;
+    get dataCompeticao(){
+        return this.#dataCompeticao;
     }
 
-    get limiteCorredores(){
-        return this.#limiteCorredores;
+    get qtdCompetidores(){
+        return this.#qtdCompetidores;
     }
 
     get modalidade(){
@@ -46,7 +44,7 @@ export class Competicao {
     }
 
     historico(atleta){
-        atleta.historico(atleta.id,this.#nome);
+        atleta.historico(atleta.id, this.#nomeCompeticao);
     }
 
     toString() {

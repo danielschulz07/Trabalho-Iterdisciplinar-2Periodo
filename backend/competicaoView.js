@@ -12,19 +12,22 @@ const inNomeCorridaSelecionada = document.getElementById("inNomeCorridaSeleciona
 const btInscrever = document.getElementById("btInscrever");
 const btAlterar = document.getElementById("btAlterar");
 const outSaida = document.getElementById("outSaida");
-const btExcluir = document.getElementById("btExcluir");
-const inNomeCorrida = document.getElementById("inNomeCorrida");
+const inNomeCompeticao = document.getElementById("inNomeCompeticao");
 const inDistancia = document.getElementById("inDistancia");
 const dtCorrida = document.getElementById("dtCorrida");
 const inQtdCompetidores = document.getElementById("inQtdCompetidores");
-const inAltimetria = document.getElementById("inAltimetria");
+const inTerreno = document.getElementById("inTerreno");
 const inGanhoElevacao = document.getElementById("inGanhoElevacao");
 const qtdCheckpointMaratona = document.getElementById("qtdCheckpointMaratona");
 const qtdCheckpointTrail = document.getElementById("qtdCheckpointTrail");
 const btCadastrarCorrida = document.getElementById("btCadastrarCorrida");
 const btInscreverAtletaComp = document.getElementById("btInscreverAtletaComp");
 const btBuscar = document.getElementById("btBuscar");
+const btBuscarCompeticao = document.getElementById("btBuscarCompeticao");
 const btCancelar = document.getElementById("btCancelar");
+const btCancelarCompeticao = document.getElementById("btCancelarCompeticao");
+const btExcluir = document.getElementById("btExcluir");
+const btExcluirCompeticao = document.getElementById("btExcluirCompeticao");
 const slcOpcaoCorrida = document.getElementById("slcOpcaoCorrida");
 const slcOpcaoModalidade = document.getElementById("slcOpcaoModalidade");
 const slcOpcaoModalidadeTrail = document.getElementById("slcOpcaoModalidadeTrail");
@@ -86,10 +89,6 @@ if(btExcluir){
         outSaida.style.color = "black";
         outSaida.innerHTML = AtletaControl.excluir(nome);
         inNome.value = "";
-        inIdade.value = "";
-        inCpf.value = "";
-        inNacionalidade.value = "";
-        slcOpcaoCorrida.value = "Selecione a Modalidade da Competição";
         btCancelar.style.display = "none";
     }
 })
@@ -190,14 +189,36 @@ btCancelar.addEventListener("click", function () {
 })
 }
 
+if(slcOpcaoModalidade){
+slcOpcaoModalidade.addEventListener("change", function () {
+    let opcaoModalidade = slcOpcaoModalidade.value;
+
+    if (opcaoModalidade == "Maratona") {
+        qtdCheckpointTrail.disabled = true;
+        inTerreno.disabled = true;
+        slcOpcaoModalidadeTrail.disabled = true;
+        slcOpcaoDificuldade.disabled = true;
+        inGanhoElevacao.disabled = false;
+        qtdCheckpointMaratona.disabled = false;
+    } if (opcaoModalidade == "TrailRunning") {
+        inGanhoElevacao.disabled = true;
+        qtdCheckpointMaratona.disabled = true;
+        qtdCheckpointTrail.disabled = false;
+        inTerreno.disabled = false;
+        slcOpcaoModalidadeTrail.disabled = false;
+        slcOpcaoDificuldade.disabled = false;
+    }
+})
+}
+
 if (btCadastrarCorrida) {
     btCadastrarCorrida.addEventListener('click', function () {
 
-        let nomeCompeticao = (inNomeCorrida.value).toUpperCase();
+        let nomeCompeticao = (inNomeCompeticao.value).toUpperCase();
         let distancia = Number(inDistancia.value);
-        let dataCorrida = new Date(dtCorrida.value);
+        let dataCompeticao = new Date(dtCorrida.value);
         let qtdCompetidores = Number(inQtdCompetidores.value);
-        let altimetria = Number(inAltimetria.value);
+        let tipoTerreno = inTerreno.value;
         let ganhoElevacao = Number(inGanhoElevacao.value);
         let qtdCheckMaratona = Number(qtdCheckpointMaratona.value);
         let qtdCheckTrail = Number(qtdCheckpointTrail.value);
@@ -213,7 +234,7 @@ if (btCadastrarCorrida) {
             outSaida.style.color = "red";
             outSaida.textContent = "O campo Distancia deve ser preenchido com um valor acima de 0!";
             inDistancia.focus();
-        } else if (!dtCorrida.value || isNaN(dataCorrida.getTime())) {
+        } else if (!dtCorrida.value || isNaN(dataCompeticao.getTime())) {
             outSaida.style.color = "red";
             outSaida.textContent = "Deve ser preenchida uma data válida!";
             dtCorrida.focus();
@@ -221,21 +242,11 @@ if (btCadastrarCorrida) {
             outSaida.style.color = "red";
             outSaida.textContent = "O campo Quantidade de Competidores deve ser preenchido com um valor acima de 0!";
             inQtdCompetidores.focus();
-        }else if (altimetria <= 0) {
-            outSaida.style.color = "red";
-            outSaida.textContent = "Altimetria deve ter um valor acima de 0!";
-            inAltimetria.focus();
         } else if (opcaoModalidade == "Selecione a modalidade") {
             outSaida.style.color = "red";
             outSaida.textContent = "Selecione uma modalidade!";
             slcOpcaoModalidade.focus();
         } else if (opcaoModalidade == "Maratona") {
-            qtdCheckpointTrail.disabled = true;
-            slcOpcaoModalidadeTrail.disabled = true;
-            slcOpcaoDificuldade.disabled = true;
-            inGanhoElevacao.disabled = false;
-            qtdCheckpointMaratona.disabled = false;
-
             if (ganhoElevacao <= 0) {
                 outSaida.style.color = "red";
                 outSaida.textContent = "O campo Ganho de elevação deve ser preenchido com um valor acima de 0!";
@@ -246,36 +257,207 @@ if (btCadastrarCorrida) {
                 qtdCheckpointMaratona.focus();
             } else {
                 outSaida.style.color = "black";
-                outSaida.innerHTML = CompeticaoControl.adicionar(nomeCompeticao, distancia, dataCorrida, qtdCompetidores, altimetria, opcaoModalidade, ganhoElevacao, qtdCheckMaratona, qtdCheckTrail, opcaoModalidadeTrail, opcaoDificuldade);
+                outSaida.innerHTML = CompeticaoControl.adicionar(nomeCompeticao, distancia, dataCompeticao, qtdCompetidores, opcaoModalidade, ganhoElevacao, qtdCheckMaratona, qtdCheckTrail, tipoTerreno, opcaoModalidadeTrail, opcaoDificuldade);
+                inNomeCompeticao.value = "";
+                inDistancia.value = "";
+                dtCorrida.value = "";
+                inQtdCompetidores.value = "";
+                slcOpcaoModalidade.value = "Selecione a modalidade";
+                inGanhoElevacao.value = "";
+                qtdCheckpointMaratona.value = "";
             }
         } else if (opcaoModalidade == "TrailRunning") {
-            inGanhoElevacao.disabled = true;
-            qtdCheckpointMaratona.disabled = true;
-            qtdCheckpointTrail.disabled = false;
-            slcOpcaoModalidadeTrail.disabled = false;
-            slcOpcaoDificuldade.disabled = false;
-
             if (qtdCheckTrail <= 0) {
                 outSaida.style.color = "red";
                 outSaida.textContent = "O campo Quantidade de CheckPoint deve ser preenchido com um valor acima de 0!";
                 qtdCheckpointTrail.focus();
-            }
-            else if (opcaoModalidadeTrail == "Selecione o tipo") {
+            } else if (tipoTerreno == "") {
+                outSaida.style.color = "red";
+                outSaida.textContent = "Preencha o campo de Tipo de Terreno";
+                inTerreno.focus();
+            } else if (opcaoModalidadeTrail == "Selecione o tipo") {
                 outSaida.style.color = "red";
                 outSaida.textContent = "O campo de Modalidade do Tril deve ser preenchido com um valor válido!";
                 slcOpcaoModalidadeTrail.focus();
-            }
-            else if (opcaoDificuldade == "Selecione o tipo") {
+            } else if (opcaoDificuldade == "Selecione o tipo") {
                 outSaida.style.color = "red";
                 outSaida.textContent = "O campo de Dificuldade deve ser preenchido com um valor válido!";
                 slcOpcaoDificuldade.focus();
             } else {
                 outSaida.style.color = "black";
-                outSaida.innerHTML = CompeticaoControl.adicionar(nomeCompeticao, distancia, dataCorrida, qtdCompetidores, altimetria, opcaoModalidade, ganhoElevacao, qtdCheckMaratona, qtdCheckTrail, opcaoModalidadeTrail, opcaoDificuldade);
+                outSaida.innerHTML = CompeticaoControl.adicionar(nomeCompeticao, distancia, dataCompeticao, qtdCompetidores, opcaoModalidade, ganhoElevacao, qtdCheckMaratona, qtdCheckTrail, tipoTerreno, opcaoModalidadeTrail, opcaoDificuldade);
+                inNomeCompeticao.value = "";
+                inDistancia.value = "";
+                dtCorrida.value = "";
+                inQtdCompetidores.value = "";
+                slcOpcaoModalidade.value = "Selecione a modalidade";
+                qtdCheckpointTrail.value = "";
+                inTerreno.value = "";
+                slcOpcaoModalidadeTrail.value = "Selecione o tipo de Modadalidade";
+                slcOpcaoDificuldade.value = "Selecione o tipo de Dificuldade";
             }
         }
     });
 }
+
+if (btExcluirCompeticao) {
+    btExcluirCompeticao.addEventListener('click', function () {
+
+        let nomeCompeticao = (inNomeCompeticao.value).toUpperCase();
+
+        if (nomeCompeticao == "") {
+            outSaida.style.color = "red";
+            outSaida.textContent = "Erro! O campo nome da Competição deve ser preenchido";
+            inNomeCompeticao.focus();
+        } else {
+            outSaida.style.color = "black";
+            outSaida.innerHTML = "";
+            outSaida.innerHTML = CompeticaoControl.excluir(nomeCompeticao);
+            inNomeCompeticao.value = "";
+            btCancelarCompeticao.style.display = "none";
+        }
+    })
+}
+
+if(btBuscarCompeticao){
+btBuscarCompeticao.addEventListener('click', function (){
+    
+    let nomeCompeticao = (inNomeCompeticao.value).toUpperCase();
+
+    if (nomeCompeticao == "") {
+        outSaida.style.color = "red";
+        outSaida.textContent = "Erro! O campo nome da Competição deve ser preenchido";
+        inNomeCompeticao.focus();
+        return;
+    } else {
+
+
+        let competicaEncontrada = CompeticaoControl.procurar(nomeCompeticao, {
+            nomeCompeticao: inNomeCompeticao.textContent,
+            distancia: Number(inDistancia.textContent),
+            dataCompeticao: dtCorrida.textContent,
+            qtdCompetidores: inQtdCompetidores.textContent,
+            modalidade: slcOpcaoModalidade.textContent
+        }) 
+        if (competicaEncontrada) {
+            inNomeCompeticao.value = competicaEncontrada.nomeCompeticao;
+            inDistancia.value = competicaEncontrada.distancia;
+            dtCorrida.value = competicaEncontrada.dataCompeticao;
+            inQtdCompetidores.value = competicaEncontrada.qtdCompetidores;
+            slcOpcaoCorrida.value = competicaEncontrada.modalidade;
+            btCadastrarCorrida.style.display = "none"; 
+            btAlterar.style.display = "block"; 
+            btCancelar.style.display = "inline";
+            idBuscar.value = competicaEncontrada.id;
+        } else {
+            outSaida.textContent = "Atleta não existe no sistema!";
+        }
+    }
+
+
+
+
+})
+}
+
+/*
+
+if(btAlterar){
+btAlterar.addEventListener('click', function () {
+        let nome = (inNome.value).toUpperCase();
+        let idade = Number(inIdade.value);
+        let cpf = inCpf.value;
+        let nacionalidade = inNacionalidade.value;
+        let modalidade = slcOpcaoCorrida.value;
+        let id = (idBuscar.value);
+        
+        if (nome == "") {
+            outSaida.style.color = "red";
+            outSaida.textContent = "O campo Nome deve ser preenchido!";
+            inNome.focus();
+        } else if (idade == "" || idade < 18) {
+            outSaida.style.color = "red";
+            outSaida.textContent = "Deve ser preenchido uma idade válida";
+            inIdade.focus();
+        } else if (cpf.length != 11) {
+            outSaida.style.color = "red";
+            outSaida.textContent = "Deve ser preenchido uma CPF válido";
+            inCpf.focus();   
+        } else if (nacionalidade == "") {
+            outSaida.style.color = "red";
+            outSaida.textContent = "Deve ser preenchido uma nacionalidade válida";
+            inNacionalidade.focus();
+        }else if (modalidade == "Selecione a corrida") {
+            outSaida.style.color = "red";
+            outSaida.textContent = "Selecione a modadalidade de Competição";
+            slcOpcaoCorrida.focus();
+        }else {
+            outSaida.style.color = "black";
+            outSaida.innerHTML = AtletaControl.alterar(id,nome, idade, cpf, nacionalidade, modalidade);
+            inNome.value = "";
+            inIdade.value = "";
+            inCpf.value = "";
+            inNacionalidade.value = "";
+            slcOpcaoCorrida.value = "Selecione a Modalidade da Competição";
+            idBuscar.textContent = ""; 
+        }
+        btInscrever.style.display = "block"; 
+        btAlterar.style.display = "none"; 
+        btCancelar.style.display = "none";
+})
+}
+
+if(btCancelar){
+btCancelar.addEventListener("click", function () {
+    inNome.value = "";
+    inIdade.value = "";
+    inCpf.value = "";
+    inNacionalidade.value = "";
+    slcOpcaoCorrida.value = "Selecione a Modalidade da Competição";
+    idBuscar.textContent = ""; 
+    
+    btInscrever.style.display = "block"; 
+    btAlterar.style.display = "none"; 
+    btCancelar.style.display = "none";
+})
+}
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 if(btInscreverAtletaComp){
     btInscreverAtletaComp.addEventListener('click', function(){
@@ -302,41 +484,3 @@ if(btInscreverAtletaComp){
 
     })
 }
-/*
-btInscreverAtletaComp.addEventListener('click', function () {
-    let nome = (inNome.value).toUpperCase();
-    let cpf = inCpf.value;
-    let corridaSelecionada = (inNomeCorridaSelecionada.value).toUpperCase();
-
-        if (nome == "") {
-            outSaida.style.color = "red";
-            outSaida.textContent = "O campo Nome deve ser preenchido!";
-            inNome.focus();
-        } else if (cpf.length != 11) {
-            outSaida.style.color = "red";
-            outSaida.textContent = "Deve ser preenchido uma CPF válido";
-            inCpf.focus();
-        } else if(corridaSelecionada == ""){
-            outSaida.style.color = "red";
-            outSaida.textContent = "Deve ser preenchido a corrida que o Atleta ira Participar";
-            inNomeCorridaSelecionada.focus();
-        } else{
-            if (AtletaControl.adicionarAtleta(nome, dtNascPessoa, idade, cpf, opcao) == true) {
-                outSaida.style.color = "blue";
-                outSaida.textContent = "O novo produto foi acrescentado com sucesso!";
-            } else {
-                outSaida.style.color = "red";
-                outSaida.textContent = "Erro! O Competidor " + nome + " já estava cadastrado!";
-                inNome.focus();
-            }  
-
-
-
-        }
-    })
-    */
-
-
-
-
-

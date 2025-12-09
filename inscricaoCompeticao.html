@@ -22,16 +22,18 @@
             <div class="box">
 
                 <h2>Cadastro de Competição</h2>
+                <p id="idBuscar" type="number" display="none"></p>
                 <label>Nome da Competição</label>
-                <input id="inNomeCorrida" type="text" placeholder="Ex: Trail Run Serra">
+                <input id="inNomeCompeticao" type="text" placeholder="Ex: Trail Run Serra">
+                <button id="btBuscarCompeticao" class="btnBuscar">Buscar</button>
+                <button id="btExcluirCompeticao" class="btnExcluir">Exluir</button>
+                <button id="btCancelarCompeticao" class="btnCancelar" style="display: none">Cancelar</button>
                 <label>Distância (km)</label>
                 <input id="inDistancia" type="number" placeholder="Ex: 10">
                 <label>Data da Competição</label>
                 <input id="dtCorrida" type="date">
                 <label>Quantidade de Atletas </label>
                 <input id="inQtdCompetidores" type="number" placeholder="Digite a quantidade de Competidores">
-                <label>Altimetria </label>
-                <input id="inAltimetria" type="number" placeholder="Digite a Altimetria">
 
                 <label>Modalidade</label>
                 <select name="opcao" id="slcOpcaoModalidade">
@@ -58,17 +60,19 @@
 
                 <label>Quantidade de checkpoints</label>
                 <input id="qtdCheckpointTrail" type="number" placeholder="Ex: 8">
+                <label>Tipo de Terreno </label>
+                <input id="inTerreno" type="text" placeholder="Digite o tipo do Terreno">
 
                 <label>Modalidade do Trail</label>
                 <select name="opcao" id="slcOpcaoModalidadeTrail">
-                    <option selected disabled>Selecione o tipo</option>
+                    <option selected disabled>Selecione o tipo de Modadalidade</option>
                     <option value="velocidade">Velocidade</option>
                     <option value="regularidade">Regularidade</option>
                 </select>
 
                 <label>Nível de Dificuldade</label>
                 <select name="opcao" id="slcOpcaoDificuldade">
-                    <option selected disabled>Selecione o tipo</option>
+                    <option selected disabled>Selecione o tipo de Dificuldade</option>
                     <option value="MuitoFacil">Muito Fácil</option>
                     <option value="Facil">Fácil</option>
                     <option value="Media">Média</option>
@@ -76,6 +80,7 @@
                     <option value="MuitoDificil">Muito Difícil</option>
                 </select>
                 <input class="button" type="button" id="btCadastrarCorrida" value="Cadastrar Competição">
+                <input class="button" type="button" id="btAlterar" value="Alterar Atleta" style="display: none">
                 <p id="outSaida"></p>
             </div>
         </div>

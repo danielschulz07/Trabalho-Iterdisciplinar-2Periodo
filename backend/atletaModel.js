@@ -10,11 +10,6 @@ export function pesquisarAtleta(nome){
     return (indAtleta == -1) ? null : vetAtletas[indAtleta];
 }
 
-//export function pesquisarAtletaID(nome){
-//    let indAtleta = vetAtletas.findIndex(objProd => objProd.nome == nome);
-//    return (indAtleta == -1) ? null : indAtleta;
-//}
-
 export function inserirAtleta(nome, idade, cpf, nacionalidade, modadalidade){
     let atletaEncontrado = pesquisarAtleta(nome);
 
@@ -42,7 +37,6 @@ export function procurarAtleta(nome) {
 
     if (atletaEncontrado != null) {
         return atletaEncontrado;
-        //return atletaEncontrado.id;
     }
     return false;
 }
@@ -56,4 +50,5 @@ export function alterarAtleta(id, nome, idade, cpf, nacionalidade, modalidade) {
         vetAtletas[id].nacionalidade = nacionalidade;
         vetAtletas[id].modalidade = modalidade;
         }
+        return
     }
