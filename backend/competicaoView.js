@@ -34,6 +34,11 @@ const inColocacao = document.getElementById("inColocacao");
 const inLocal = document.getElementById("inLocal");
 const inQtdInscritos = document.getElementById("inQtdInscritos");
 const slcOpcaoCorridaFiltro = document.getElementById("slcOpcaoCorridaFiltro");
+const inNomeCorridaFiltro = document.getElementById("inNomeCorridaFiltro");
+const inDistanciaFiltro = document.getElementById("inDistanciaFiltro");
+const dtCorridaFiltro = document.getElementById("dtCorridaFiltro");
+const inQtdCompetidoresFiltro = document.getElementById("inQtdCompetidoresFiltro");
+const inLocalFiltro = document.getElementById("inLocalFiltro");
 
 if (btInscrever) {
     btInscrever.addEventListener('click', function () {
@@ -404,19 +409,18 @@ if(btPesquisarAtleta){
 if(btPesquisarCorrida){
 
     btPesquisarCorrida.addEventListener("click", function(){
-        let nomeCompeticao = (inNomeCorrida.value).toUpperCase();
-        let distancia = Number(inDistancia.value);
+        let nomeCompeticao = (inNomeCorridaFiltro.value).toUpperCase();
+        let distancia = Number(inDistanciaFiltro.value);
         let dataCorrida = "";
         if(dtCorrida.value == ""){
             dataCorrida = "";
         }else{
     
-             dataCorrida = new Date(dtCorrida.value + "T00:00:00");//Escolher horario?
+             dataCorrida = new Date(dtCorridaFiltro.value + "T00:00:00");//Escolher horario?
         }
-        let qtdCompetidores = Number(inQtdCompetidores.value);
-        let opcaoModalidade = slcOpcaoModalidade.value;
-        let local = inLocal.value;
-    
+        let qtdCompetidores = Number(inQtdCompetidoresFiltro.value);
+        let opcaoModalidade = slcOpcaoCorridaFiltro.value;
+        let local = inLocalFiltro.value;
         CompeticaoControl.pesquisarCorrida(nomeCompeticao, distancia, dataCorrida, qtdCompetidores, opcaoModalidade, local);
     })
 }
