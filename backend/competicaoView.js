@@ -206,6 +206,8 @@ if (btCancelar) {
         slcOpcaoCorrida.value = "Selecione a Modalidade da Competição";
         idBuscar.textContent = "";
 
+
+
         btInscrever.style.display = "block";
         btAlterar.style.display = "none";
         btCancelar.style.display = "none";
@@ -516,6 +518,9 @@ if (btCancelarCompeticao) {
         inTerreno.value = "";
         slcOpcaoModalidadeTrail.value = "Selecione o tipo de Modadalidade";
         slcOpcaoDificuldade.value = "Selecione o tipo de Dificuldade";
+        inGanhoElevacao.value = "";
+        qtdCheckpointMaratona.value = "";
+        inLocal.value = "";
 
         btCadastrarCorrida.style.display = "block";
         btAlterarCompeticao.style.display = "none";

@@ -63,7 +63,7 @@ export function alterarCompeticao(id, nomeCompeticao, distancia, dataCompeticao,
         vetCompeticoes[id].local = local;
         vetCompeticoes[id].altimetria = ganhoElevacao;
         vetCompeticoes[id].qtdPontoApoio = qtdCheckMaratona;
-        vetCompeticoes[id].qtdCheckPoints = qtdCheckTrail;
+        vetCompeticoes[id].qtdCheckpoints = qtdCheckTrail;
         vetCompeticoes[id].tipoTerreno = tipoTerreno;
         vetCompeticoes[id].modalidadeTrail = opcaoModalidadeTrail;
         vetCompeticoes[id].nivelDificuldade = opcaoDificuldade;
