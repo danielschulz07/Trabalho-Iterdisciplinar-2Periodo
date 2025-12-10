@@ -15,10 +15,17 @@ export class Maratona extends Competicao{
         return this.#qtdPontoApoio;
     }
 
+    set qtdPontoApoio(qtdPontoApoio){
+        this.#qtdPontoApoio = qtdPontoApoio;
+    }
+
     get altimetria(){
         return this.#altimetria;
     }
 
+    set altimetria(altimetria){
+        this.#altimetria = altimetria
+    }
     
     toString() {
         return (super.toString() +

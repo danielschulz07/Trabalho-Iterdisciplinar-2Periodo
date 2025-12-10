@@ -27,20 +27,40 @@ export class Competicao {
         return this.#nomeCompeticao;
     }
 
+    set nomeCompeticao(nomeCompeticao){
+        this.#nomeCompeticao = nomeCompeticao;
+    }
+
     get distancia(){
         return this.#distancia;
+    }
+
+    set distancia(distancia){
+        this.#distancia = distancia;
     }
 
     get dataCompeticao(){
         return this.#dataCompeticao;
     }
 
+    set dataCompeticao(dataCompeticao){
+        this.#dataCompeticao = dataCompeticao;
+    }
+
     get qtdCompetidores(){
         return this.#qtdCompetidores;
     }
 
+    set qtdCompetidores(qtdCompetidores){
+        this.#qtdCompetidores = qtdCompetidores;
+    }
+
     get modalidade(){
         return this.#modalidade;
+    }
+
+    set modalidade(modadalidade){
+        this.#modalidade = modadalidade;
     }
 
     historico(atleta){

@@ -5,15 +5,15 @@ const vetAtletas = [ate];
 console.log(ate)
 
 
-export function pesquisarAtleta(nome){
+export function pesquisarAtleta(nome) {
     let indAtleta = vetAtletas.findIndex(objProd => objProd.nome == nome);
     return (indAtleta == -1) ? null : vetAtletas[indAtleta];
 }
 
-export function inserirAtleta(nome, idade, cpf, nacionalidade, modadalidade){
+export function inserirAtleta(nome, idade, cpf, nacionalidade, modadalidade) {
     let atletaEncontrado = pesquisarAtleta(nome);
 
-    if(atletaEncontrado == null){
+    if (atletaEncontrado == null) {
         let atleta = new Atleta(nome, idade, cpf, nacionalidade, modadalidade);
         vetAtletas.push(atleta);
         console.log(vetAtletas);
@@ -22,7 +22,7 @@ export function inserirAtleta(nome, idade, cpf, nacionalidade, modadalidade){
     return false;
 }
 
-export function excluirAtleta(nome){
+export function excluirAtleta(nome) {
     let indAtleta = vetAtletas.findIndex(objProd => objProd.nome == nome);
 
     if (indAtleta >= 0) {
@@ -49,6 +49,6 @@ export function alterarAtleta(id, nome, idade, cpf, nacionalidade, modalidade) {
         vetAtletas[id].cpf = cpf;
         vetAtletas[id].nacionalidade = nacionalidade;
         vetAtletas[id].modalidade = modalidade;
-        }
-        return
     }
+    return
+}

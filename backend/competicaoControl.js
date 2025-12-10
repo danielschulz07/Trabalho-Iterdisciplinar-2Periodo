@@ -19,7 +19,7 @@ export function procurar(nomeCompeticao) {
     return atletaEncontrado;
 }
 
-//export function alterar(id, nome, idade, cpf, nacionalidade, modalidade){
- //       let competicaEncontrada = CompeticoesModel.alterarCompeticao(id, nome, idade, cpf, nacionalidade, modalidade);
-   // return competicaEncontrada;
-//}
+export function alterar(id, nomeCompeticao, distancia, dataCompeticao, qtdCompetidores, opcaoModalidade, ganhoElevacao, qtdCheckMaratona, qtdCheckTrail, tipoTerreno, opcaoModalidadeTrail, opcaoDificuldade){
+    let competicaEncontrada = CompeticoesModel.alterarCompeticao(id, nomeCompeticao, distancia, dataCompeticao, qtdCompetidores, opcaoModalidade, ganhoElevacao, qtdCheckMaratona, qtdCheckTrail, tipoTerreno, opcaoModalidadeTrail, opcaoDificuldade);
+    return competicaEncontrada;
+}

@@ -22,19 +22,33 @@ export class TrailRunning extends Competicao{
         return this.#qtdCheckpoints;
     }
 
+    set qtdCheckpoints(qtdCheckpoints){
+        this.#qtdCheckpoints = qtdCheckpoints;
+    }
+
     get tipoTerreno(){
         return this.#tipoTerreno;
+    }
+
+    set tipoTerreno(tipoTerreno){
+        this.#tipoTerreno = tipoTerreno;
     }
 
     get modalidadeTrail(){
         return this.#modalidadeTrail;
     }
 
+    set modalidadeTrail(modalidadeTrail){
+        this.#modalidadeTrail = modalidadeTrail;
+    }
+
     get nivelDificuldade(){
         return this.#nivelDificuldade;
     }
 
-
+    set nivelDificuldade(nivelDificuldade){
+        this.#nivelDificuldade = nivelDificuldade;
+    }
 
 
     toString() {
