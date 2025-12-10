@@ -52,13 +52,14 @@ export function procurarCompeticao(nomeCompeticao) {
     return false;
 }
 
-export function alterarCompeticao(id, nomeCompeticao, distancia, dataCompeticao, qtdCompetidores, opcaoModalidade, ganhoElevacao, qtdCheckMaratona, qtdCheckTrail, tipoTerreno, opcaoModalidadeTrail, opcaoDificuldade) {
+export function alterarCompeticao(id, nomeCompeticao, distancia, dataCompeticao, qtdCompetidores, opcaoModalidade,local, ganhoElevacao, qtdCheckMaratona, qtdCheckTrail, tipoTerreno, opcaoModalidadeTrail, opcaoDificuldade) {
     if (id != -1) {
         vetCompeticoes[id].nomeCompeticao = nomeCompeticao;
         vetCompeticoes[id].distancia = distancia;
         vetCompeticoes[id].dataCompeticao = dataCompeticao;
         vetCompeticoes[id].qtdCompetidores = qtdCompetidores;
         vetCompeticoes[id].opcaoModalidade = opcaoModalidade;
+        vetCompeticoes[id].local = local;
         vetCompeticoes[id].ganhoElevacao = ganhoElevacao;
         vetCompeticoes[id].qtdCheckMaratona = qtdCheckMaratona;
         vetCompeticoes[id].qtdCheckTrail = qtdCheckTrail;

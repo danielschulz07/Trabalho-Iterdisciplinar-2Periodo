@@ -446,7 +446,7 @@ if (btAlterarCompeticao) {
                 qtdCheckpointMaratona.focus();
             } else {
                 outSaida.style.color = "black";
-                outSaida.innerHTML = CompeticaoControl.alterar(id, nomeCompeticao, distancia, dataCompeticao, qtdCompetidores, opcaoModalidade, ganhoElevacao, qtdCheckMaratona, qtdCheckTrail, tipoTerreno, opcaoModalidadeTrail, opcaoDificuldade);
+                outSaida.innerHTML = CompeticaoControl.alterar(id, nomeCompeticao, distancia, dataCompeticao, qtdCompetidores, opcaoModalidade,local, ganhoElevacao, qtdCheckMaratona, qtdCheckTrail, tipoTerreno, opcaoModalidadeTrail, opcaoDificuldade);
                 inNomeCompeticao.value = "";
                 inDistancia.value = "";
                 dtCorrida.value = "";
