@@ -4,8 +4,8 @@ import { TrailRunning } from "./TrailRunning.js";
 import { Maratona } from "./Maratona.js";
 import { Competidor } from "./Competidor.js";
 
-const atleta01 = new Maratona("Milhas Garoto", 12, "02/03/2005", 12, "Maratona", 22, 33)
-const trail = new TrailRunning("zxc",123,"12/01/2000",40,"TrailRunning",20,"bro","bro","bro","bro");
+const atleta01 = new Maratona("Milhas Garoto", 12, "02/03/2005", 12, "Maratona", "casa", 33, 33)
+const trail = new TrailRunning("zxc",123,"12/01/2000",40,"TrailRunning","bro",20,"bro","bro","bro");
 const vetCompeticoes = [atleta01,trail];
 const vetCompetidores = [];
 console.log(atleta01)
@@ -139,6 +139,7 @@ export function filtrarCorrida(nomeCompeticao, distancia, data, qtdCompetidores,
                 qtdInscritos++;
             }
         }
+
         if(vetCompeticoes[i].dataCompeticao.length == 10){
             //alert(vetCompeticoes[i].dataCompeticao);
             let vetDDMMAAAA = vetCompeticoes[i].dataCompeticao.split('/');
@@ -157,7 +158,7 @@ export function filtrarCorrida(nomeCompeticao, distancia, data, qtdCompetidores,
              (vetCompeticoes[i].distancia <= distancia || distancia == 0) &&
               (datavetCompeticoes <= data || data == "") &&
                (vetCompeticoes[i].qtdCompetidores <= qtdCompetidores || qtdCompetidores == 0) &&
-                (vetCompeticoes[i].local == local || local == "") && 
+                (vetCompeticoes[i].local.toUpperCase().includes(local.toUpperCase())) && 
                (qtdInscritos <= inscritos && inscritos != null|| inscritos == null)
             )
             criarRelatorio(i,qtdInscritos);
