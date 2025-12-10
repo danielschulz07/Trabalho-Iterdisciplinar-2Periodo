@@ -169,7 +169,7 @@ export function filtrarCorrida(nomeCompeticao, distancia, data, qtdCompetidores,
              (vetCompeticoes[i].distancia <= distancia || distancia == 0) &&
               (datavetCompeticoes <= data || data == "") &&
                (vetCompeticoes[i].qtdCompetidores <= qtdCompetidores || qtdCompetidores == 0) &&
-                (vetCompeticoes[i] instanceof Maratona == true) && (vetCompeticoes[i].local == local || local == "") && 
+                (vetCompeticoes[i] instanceof Maratona == true) && (vetCompeticoes[i].local.toUpperCase().includes(local.toUpperCase())) && 
                (qtdInscritos <= inscritos && inscritos != null|| inscritos == null)
             )
             criarRelatorio(i,qtdInscritos);
@@ -180,7 +180,7 @@ export function filtrarCorrida(nomeCompeticao, distancia, data, qtdCompetidores,
              (vetCompeticoes[i].distancia <= distancia || distancia == 0) &&
               (datavetCompeticoes <= data || data == "") &&
                (vetCompeticoes[i].qtdCompetidores <= qtdCompetidores || qtdCompetidores == 0) &&
-                (vetCompeticoes[i] instanceof TrailRunning == true) && (vetCompeticoes[i].local == local || local == "") && 
+                (vetCompeticoes[i] instanceof TrailRunning == true) && (vetCompeticoes[i].local.toUpperCase().includes(local.toUpperCase())) && 
                (qtdInscritos <= inscritos && inscritos != null|| inscritos == null)
             )
             criarRelatorio(i,qtdInscritos);
