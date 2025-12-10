@@ -5,7 +5,8 @@ import { Maratona } from "./Maratona.js";
 import { Competidor } from "./Competidor.js";
 
 const atleta01 = new Maratona("Milhas Garoto", 12, "02/03/2005", 12, "Maratona", 22, 33)
-const vetCompeticoes = [atleta01];
+const trail = new TrailRunning("zxc",123,"12/01/2000",40,"TrailRunning",20,"bro","bro","bro","bro");
+const vetCompeticoes = [atleta01,trail];
 const vetCompetidores = [];
 console.log(atleta01)
 
@@ -14,17 +15,17 @@ export function pesquisarCompeticao(nomeCompeticao) {
     return (indCompeticao == -1) ? null : vetCompeticoes[indCompeticao];
 }
 
-export function adicionarCompeticao(nomeCompeticao, distancia, dataCompeticao, qtdCompetidores, opcaoModalidade, ganhoElevacao, qtdCheckMaratona, qtdCheckTrail, tipoTerreno, opcaoModalidadeTrail, opcaoDificuldade) {
+export function adicionarCompeticao(nomeCompeticao, distancia, dataCompeticao, qtdCompetidores, opcaoModalidade, ganhoElevacao, qtdCheckMaratona, qtdCheckTrail, tipoTerreno, opcaoModalidadeTrail, opcaoDificuldade,local) {
     let competicao = pesquisarCompeticao(nomeCompeticao);
 
     if (competicao == null) {
         if (opcaoModalidade == "Maratona") {
-            competicao = new Maratona(nomeCompeticao, distancia, dataCompeticao, qtdCompetidores, opcaoModalidade, ganhoElevacao, qtdCheckMaratona);
+            competicao = new Maratona(nomeCompeticao, distancia, dataCompeticao, qtdCompetidores, opcaoModalidade,local, ganhoElevacao, qtdCheckMaratona);
             vetCompeticoes.push(competicao);
             console.log(vetCompeticoes);
             return true;
         } if (opcaoModalidade == "TrailRunning") {
-            competicao = new TrailRunning(nomeCompeticao, distancia, dataCompeticao, qtdCompetidores, opcaoModalidade, qtdCheckTrail, tipoTerreno, opcaoModalidadeTrail, opcaoDificuldade);
+            competicao = new TrailRunning(nomeCompeticao, distancia, dataCompeticao, qtdCompetidores, opcaoModalidade, local, qtdCheckTrail, tipoTerreno, opcaoModalidadeTrail, opcaoDificuldade);
             vetCompeticoes.push(competicao);
             console.log(vetCompeticoes);
             return true;
@@ -58,16 +59,15 @@ export function alterarCompeticao(id, nomeCompeticao, distancia, dataCompeticao,
         vetCompeticoes[id].distancia = distancia;
         vetCompeticoes[id].dataCompeticao = dataCompeticao;
         vetCompeticoes[id].qtdCompetidores = qtdCompetidores;
-        vetCompeticoes[id].opcaoModalidade = opcaoModalidade;
+        vetCompeticoes[id].modalidade = opcaoModalidade;
         vetCompeticoes[id].local = local;
-        vetCompeticoes[id].ganhoElevacao = ganhoElevacao;
-        vetCompeticoes[id].qtdCheckMaratona = qtdCheckMaratona;
-        vetCompeticoes[id].qtdCheckTrail = qtdCheckTrail;
+        vetCompeticoes[id].altimetria = ganhoElevacao;
+        vetCompeticoes[id].qtdPontoApoio = qtdCheckMaratona;
+        vetCompeticoes[id].qtdCheckPoints = qtdCheckTrail;
         vetCompeticoes[id].tipoTerreno = tipoTerreno;
-        vetCompeticoes[id].opcaoModalidadeTrail = opcaoModalidadeTrail;
-        vetCompeticoes[id].opcaoDificuldade = opcaoDificuldade;
+        vetCompeticoes[id].modalidadeTrail = opcaoModalidadeTrail;
+        vetCompeticoes[id].nivelDificuldade = opcaoDificuldade;
     }
-    return
 }
 
 var comp = new Competidor(1,2,1,1);

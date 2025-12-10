@@ -246,6 +246,7 @@ if (btCadastrarCorrida) {
         let qtdCheckMaratona = Number(qtdCheckpointMaratona.value);
         let qtdCheckTrail = Number(qtdCheckpointTrail.value);
         let opcaoModalidade = slcOpcaoModalidade.value;
+        let local = inLocal.value;
         let opcaoModalidadeTrail = slcOpcaoModalidadeTrail.value;
         let opcaoDificuldade = slcOpcaoDificuldade.value;
 
@@ -280,7 +281,7 @@ if (btCadastrarCorrida) {
                 qtdCheckpointMaratona.focus();
             } else {
                 outSaida.style.color = "black";
-                outSaida.innerHTML = CompeticaoControl.adicionar(nomeCompeticao, distancia, dataCompeticao, qtdCompetidores, opcaoModalidade, ganhoElevacao, qtdCheckMaratona, qtdCheckTrail, tipoTerreno, opcaoModalidadeTrail, opcaoDificuldade);
+                outSaida.innerHTML = CompeticaoControl.adicionar(nomeCompeticao, distancia, dataCompeticao, qtdCompetidores, opcaoModalidade, ganhoElevacao, qtdCheckMaratona, qtdCheckTrail, tipoTerreno, opcaoModalidadeTrail, opcaoDificuldade,local);
                 inNomeCompeticao.value = "";
                 inDistancia.value = "";
                 dtCorrida.value = "";
@@ -288,6 +289,7 @@ if (btCadastrarCorrida) {
                 slcOpcaoModalidade.value = "Selecione a modalidade";
                 inGanhoElevacao.value = "";
                 qtdCheckpointMaratona.value = "";
+                inLocal.value = "";
             }
         } else if (opcaoModalidade == "TrailRunning") {
             if (qtdCheckTrail <= 0) {
@@ -308,7 +310,7 @@ if (btCadastrarCorrida) {
                 slcOpcaoDificuldade.focus();
             } else {
                 outSaida.style.color = "black";
-                outSaida.innerHTML = CompeticaoControl.adicionar(nomeCompeticao, distancia, dataCompeticao, qtdCompetidores, opcaoModalidade, ganhoElevacao, qtdCheckMaratona, qtdCheckTrail, tipoTerreno, opcaoModalidadeTrail, opcaoDificuldade);
+                outSaida.innerHTML = CompeticaoControl.adicionar(nomeCompeticao, distancia, dataCompeticao, qtdCompetidores, opcaoModalidade, ganhoElevacao, qtdCheckMaratona, qtdCheckTrail, tipoTerreno, opcaoModalidadeTrail, opcaoDificuldade,local);
                 inNomeCompeticao.value = "";
                 inDistancia.value = "";
                 dtCorrida.value = "";
@@ -322,11 +324,11 @@ if (btCadastrarCorrida) {
         }
         nomeCompeticao = "";
         distancia = 0;
-        dataCorrida = "";
+        dataCompeticao = "";
         qtdCompetidores = 0;
         opcaoModalidade = "Qualquer modalidade";
-        let local = "";
-        CompeticaoControl.pesquisarCorrida(nomeCompeticao, distancia, dataCorrida, qtdCompetidores, opcaoModalidade, local);
+        local = "";
+        CompeticaoControl.pesquisarCorrida(nomeCompeticao, distancia, dataCompeticao, qtdCompetidores, opcaoModalidade, local);
     });
 }
 
@@ -364,6 +366,7 @@ if (btBuscarCompeticao) {
                 distancia: Number(inDistancia.textContent),
                 dataCompeticao: dtCorrida.value,
                 qtdCompetidores: inQtdCompetidores.textContent,
+                local: inLocal.value,
                 modalidade: slcOpcaoModalidade.textContent,
                 ganhoElevacao: inGanhoElevacao.textContent,
                 qtdCheckMaratona: qtdCheckpointMaratona.textContent,
@@ -377,16 +380,23 @@ if (btBuscarCompeticao) {
                 inDistancia.value = competicaEncontrada.distancia;
                 dtCorrida.value = new Date(competicaEncontrada.dataCompeticao).toISOString().split('T')[0];
                 inQtdCompetidores.value = competicaEncontrada.qtdCompetidores;
+                inLocal.value = competicaEncontrada.local;
                 slcOpcaoModalidade.value = competicaEncontrada.modalidade;
                 if (competicaEncontrada.modalidade == "Maratona") {
                     inGanhoElevacao.value = competicaEncontrada.altimetria;
                     qtdCheckpointMaratona.value = competicaEncontrada.qtdPontoApoio;
+                    qtdCheckpointTrail.value = "";
+                    inTerreno.value = "";
+                    slcOpcaoModalidadeTrail.value = "";
+                    slcOpcaoDificuldade.value = "";
                 }
                 if (competicaEncontrada.modalidade == "TrailRunning") {
                     qtdCheckpointTrail.value = competicaEncontrada.qtdCheckpoints;
                     inTerreno.value = competicaEncontrada.tipoTerreno;
                     slcOpcaoModalidadeTrail.value = competicaEncontrada.modalidadeTrail;
                     slcOpcaoDificuldade.value = competicaEncontrada.nivelDificuldade;
+                    inGanhoElevacao.value = "";
+                    qtdCheckpointMaratona.value = "";
                 }
                 btCadastrarCorrida.style.display = "none";
                 btAlterarCompeticao.style.display = "block";
@@ -411,6 +421,7 @@ if (btAlterarCompeticao) {
         let qtdCheckMaratona = Number(qtdCheckpointMaratona.value);
         let qtdCheckTrail = Number(qtdCheckpointTrail.value);
         let opcaoModalidade = slcOpcaoModalidade.value;
+        let local = inLocal.value;
         let opcaoModalidadeTrail = slcOpcaoModalidadeTrail.value;
         let opcaoDificuldade = slcOpcaoDificuldade.value;
         let id = (idBuscar.value);
@@ -451,6 +462,7 @@ if (btAlterarCompeticao) {
                 inDistancia.value = "";
                 dtCorrida.value = "";
                 inQtdCompetidores.value = "";
+                inLocal.value = "";
                 slcOpcaoModalidade.value = "Selecione a modalidade";
                 inGanhoElevacao.value = "";
                 qtdCheckpointMaratona.value = "";
@@ -474,12 +486,13 @@ if (btAlterarCompeticao) {
                 slcOpcaoDificuldade.focus();
             } else {
                 outSaida.style.color = "black";
-                outSaida.innerHTML = CompeticaoControl.alterar(id, nomeCompeticao, distancia, dataCompeticao, qtdCompetidores, opcaoModalidade, ganhoElevacao, qtdCheckMaratona, qtdCheckTrail, tipoTerreno, opcaoModalidadeTrail, opcaoDificuldade);
+                outSaida.innerHTML = CompeticaoControl.alterar(id, nomeCompeticao, distancia, dataCompeticao, qtdCompetidores, opcaoModalidade, local, ganhoElevacao, qtdCheckMaratona, qtdCheckTrail, tipoTerreno, opcaoModalidadeTrail, opcaoDificuldade);
                 inNomeCompeticao.value = "";
                 inDistancia.value = "";
                 dtCorrida.value = "";
                 inQtdCompetidores.value = "";
                 slcOpcaoModalidade.value = "Selecione a modalidade";
+                inLocal.value = "";
                 qtdCheckpointTrail.value = "";
                 inTerreno.value = "";
                 slcOpcaoModalidadeTrail.value = "Selecione o tipo de Modadalidade";

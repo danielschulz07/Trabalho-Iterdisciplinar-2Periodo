@@ -20,13 +20,12 @@ export function modificar(nome) {
 }
 
 export function alterar(id, nome, idade, cpf, nacionalidade, modalidade){
-        let atletaEncontrado = atletaModel.alterarAtleta(id, nome, idade, cpf, nacionalidade, modalidade);
-    return atletaEncontrado;
+        atletaModel.alterarAtleta(id, nome, idade, cpf, nacionalidade, modalidade);
+    return "Atleta alterado com sucesso";
 }
 
 export function criarRelatorio(){
     vetAtletas.criarRelatorio();
-    //return tabelaCompetidores;
 }
 
 export function pesquisarAtleta(nome, idade, cpf, nacionalidade, modalidade){
